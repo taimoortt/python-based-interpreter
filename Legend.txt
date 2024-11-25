@@ -1,0 +1,37 @@
+
+To test your own code, feel free to access and the testing.txt file for random tests. Or you can make a new text file and pass it as a command line argument
+
+Language Rules:
+
+
+1) ALL RESERVED WRODS WILL BE REPRESENTED IN LOWERCASE e.g:
+
+True represented as -----> true
+AND represented as ------> and
+While represented as ----> while
+Structs represented as --> struct
+etc.
+
+2) STRUCT DEFINITION:
+
+struct struct_name = {
+
+	attribute1;
+	attribute2;
+
+};	<---- Semicolon at the end
+
+3) LOOP DEFINITION:
+
+do{
+
+	command1;
+	command2;
+	command10;
+
+}while(condition);	<---- Semicolon at the end
+
+4) ALL STATEMENTS WILL BE FOLLOWED BY A SEMI COLON AT THE END LIKE C++.
+
+5) COMMENTS CAN BE ADDED WITH A HASHTAG LIKE IN PYTHON.
+

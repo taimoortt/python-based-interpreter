@@ -1,0 +1,3623 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> stmts
+Rule 1     stmts -> stmt SEMICOLON stmts
+Rule 2     stmts -> COMMENT
+Rule 3     stmts -> <empty>
+Rule 4     stmt -> expr
+Rule 5     stmt -> empty
+Rule 6     stmt -> var_dec
+Rule 7     stmt -> var_initialize
+Rule 8     stmt -> var_assign
+Rule 9     stmt -> var_access
+Rule 10    stmt -> function_call
+Rule 11    stmt -> loop
+Rule 12    stmt -> struct_definition
+Rule 13    stmt -> struct_attribute_initialize
+Rule 14    stmt -> unary_op
+Rule 15    struct_definition -> STRUCT NAME EQUALS LBRACE attribute_dec RBRACE
+Rule 16    attribute_dec -> var_dec SEMICOLON attribute_dec
+Rule 17    attribute_dec -> var_initialize SEMICOLON attribute_dec
+Rule 18    attribute_dec -> var_dec SEMICOLON
+Rule 19    attribute_dec -> var_initialize SEMICOLON
+Rule 20    attribute_dec -> empty
+Rule 21    var_access -> NAME
+Rule 22    struct_access -> NAME DOT NAME
+Rule 23    var_assign -> NAME EQUALS expr
+Rule 24    var_dec -> identifier NAME
+Rule 25    var_initialize -> identifier NAME EQUALS expr
+Rule 26    var_initialize -> identifier NAME EQUALS NAME
+Rule 27    identifier -> INTDEC
+Rule 28    identifier -> DOUBLEDEC
+Rule 29    identifier -> STRINGDEC
+Rule 30    identifier -> BOOLDEC
+Rule 31    identifier -> CHARDEC
+Rule 32    identifier -> NAME
+Rule 33    struct_attribute_initialize -> NAME DOT NAME EQUALS expr
+Rule 34    expr -> LPAR expr RPAR
+Rule 35    expr -> unary_op
+Rule 36    expr -> expr MULTIPLY expr
+Rule 37    expr -> expr DIVIDE expr
+Rule 38    expr -> expr PLUS expr
+Rule 39    expr -> expr MINUS expr
+Rule 40    expr -> expr MOD expr
+Rule 41    expr -> expr EXPONENT expr
+Rule 42    expr -> DOUBLE
+Rule 43    expr -> INT
+Rule 44    expr -> MINUS DOUBLE
+Rule 45    expr -> MINUS INT
+Rule 46    expr -> STRING
+Rule 47    expr -> TRUE
+Rule 48    expr -> FALSE
+Rule 49    expr -> var_access
+Rule 50    expr -> struct_access
+Rule 51    expr -> empty
+Rule 52    unary_op -> var_access INCREMENT
+Rule 53    unary_op -> var_access DECREMENT
+Rule 54    unary_op -> struct_access INCREMENT
+Rule 55    unary_op -> struct_access DECREMENT
+Rule 56    unary_op -> MINUS var_access
+Rule 57    expr -> expr conditional_operators expr
+Rule 58    expr -> NOT expr
+Rule 59    conditional_operators -> EQEQ
+Rule 60    conditional_operators -> LESS
+Rule 61    conditional_operators -> GREATER
+Rule 62    conditional_operators -> AND
+Rule 63    conditional_operators -> OR
+Rule 64    conditional_operators -> GREATEREQ
+Rule 65    conditional_operators -> LESSEQ
+Rule 66    conditional_operators -> NOTEQ
+Rule 67    loop -> DO LBRACE stmts RBRACE WHILE LPAR expr RPAR
+Rule 68    function_call -> PRINT LPAR opt_args RPAR
+Rule 69    opt_args -> expr moreargs
+Rule 70    moreargs -> COMMA expr moreargs
+Rule 71    opt_args -> empty
+Rule 72    moreargs -> empty
+Rule 73    empty -> <empty>
+
+Terminals, with rules where they appear
+
+AND                  : 62
+BOOLDEC              : 30
+CHARDEC              : 31
+COMMA                : 70
+COMMENT              : 2
+DECREMENT            : 53 55
+DIVIDE               : 37
+DO                   : 67
+DOT                  : 22 33
+DOUBLE               : 42 44
+DOUBLEDEC            : 28
+EQEQ                 : 59
+EQUALS               : 15 23 25 26 33
+EXPONENT             : 41
+FALSE                : 48
+GREATER              : 61
+GREATEREQ            : 64
+INCREMENT            : 52 54
+INT                  : 43 45
+INTDEC               : 27
+LBRACE               : 15 67
+LESS                 : 60
+LESSEQ               : 65
+LPAR                 : 34 67 68
+MINUS                : 39 44 45 56
+MOD                  : 40
+MULTIPLY             : 36
+NAME                 : 15 21 22 22 23 24 25 26 26 32 33 33
+NOT                  : 58
+NOTEQ                : 66
+OR                   : 63
+PLUS                 : 38
+PRINT                : 68
+RBRACE               : 15 67
+RPAR                 : 34 67 68
+SEMICOLON            : 1 16 17 18 19
+STRING               : 46
+STRINGDEC            : 29
+STRUCT               : 15
+TRUE                 : 47
+WHILE                : 67
+error                : 
+
+Nonterminals, with rules where they appear
+
+attribute_dec        : 15 16 17
+conditional_operators : 57
+empty                : 5 20 51 71 72
+expr                 : 4 23 25 33 34 36 36 37 37 38 38 39 39 40 40 41 41 57 57 58 67 69 70
+function_call        : 10
+identifier           : 24 25 26
+loop                 : 11
+moreargs             : 69 70
+opt_args             : 68
+stmt                 : 1
+stmts                : 1 67 0
+struct_access        : 50 54 55
+struct_attribute_initialize : 13
+struct_definition    : 12
+unary_op             : 14 35
+var_access           : 9 49 52 53 56
+var_assign           : 8
+var_dec              : 6 16 18
+var_initialize       : 7 17 19
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . stmts
+    (1) stmts -> . stmt SEMICOLON stmts
+    (2) stmts -> . COMMENT
+    (3) stmts -> .
+    (4) stmt -> . expr
+    (5) stmt -> . empty
+    (6) stmt -> . var_dec
+    (7) stmt -> . var_initialize
+    (8) stmt -> . var_assign
+    (9) stmt -> . var_access
+    (10) stmt -> . function_call
+    (11) stmt -> . loop
+    (12) stmt -> . struct_definition
+    (13) stmt -> . struct_attribute_initialize
+    (14) stmt -> . unary_op
+    (34) expr -> . LPAR expr RPAR
+    (35) expr -> . unary_op
+    (36) expr -> . expr MULTIPLY expr
+    (37) expr -> . expr DIVIDE expr
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr MOD expr
+    (41) expr -> . expr EXPONENT expr
+    (42) expr -> . DOUBLE
+    (43) expr -> . INT
+    (44) expr -> . MINUS DOUBLE
+    (45) expr -> . MINUS INT
+    (46) expr -> . STRING
+    (47) expr -> . TRUE
+    (48) expr -> . FALSE
+    (49) expr -> . var_access
+    (50) expr -> . struct_access
+    (51) expr -> . empty
+    (57) expr -> . expr conditional_operators expr
+    (58) expr -> . NOT expr
+    (73) empty -> .
+    (24) var_dec -> . identifier NAME
+    (25) var_initialize -> . identifier NAME EQUALS expr
+    (26) var_initialize -> . identifier NAME EQUALS NAME
+    (23) var_assign -> . NAME EQUALS expr
+    (21) var_access -> . NAME
+    (68) function_call -> . PRINT LPAR opt_args RPAR
+    (67) loop -> . DO LBRACE stmts RBRACE WHILE LPAR expr RPAR
+    (15) struct_definition -> . STRUCT NAME EQUALS LBRACE attribute_dec RBRACE
+    (33) struct_attribute_initialize -> . NAME DOT NAME EQUALS expr
+    (52) unary_op -> . var_access INCREMENT
+    (53) unary_op -> . var_access DECREMENT
+    (54) unary_op -> . struct_access INCREMENT
+    (55) unary_op -> . struct_access DECREMENT
+    (56) unary_op -> . MINUS var_access
+    (22) struct_access -> . NAME DOT NAME
+    (27) identifier -> . INTDEC
+    (28) identifier -> . DOUBLEDEC
+    (29) identifier -> . STRINGDEC
+    (30) identifier -> . BOOLDEC
+    (31) identifier -> . CHARDEC
+    (32) identifier -> . NAME
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    COMMENT         shift and go to state 3
+    $end            reduce using rule 3 (stmts -> .)
+    LPAR            shift and go to state 15
+    DOUBLE          shift and go to state 17
+    INT             shift and go to state 18
+    MINUS           shift and go to state 16
+    STRING          shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    NOT             shift and go to state 23
+    SEMICOLON       reduce using rule 73 (empty -> .)
+    MULTIPLY        reduce using rule 73 (empty -> .)
+    DIVIDE          reduce using rule 73 (empty -> .)
+    PLUS            reduce using rule 73 (empty -> .)
+    MOD             reduce using rule 73 (empty -> .)
+    EXPONENT        reduce using rule 73 (empty -> .)
+    EQEQ            reduce using rule 73 (empty -> .)
+    LESS            reduce using rule 73 (empty -> .)
+    GREATER         reduce using rule 73 (empty -> .)
+    AND             reduce using rule 73 (empty -> .)
+    OR              reduce using rule 73 (empty -> .)
+    GREATEREQ       reduce using rule 73 (empty -> .)
+    LESSEQ          reduce using rule 73 (empty -> .)
+    NOTEQ           reduce using rule 73 (empty -> .)
+    NAME            shift and go to state 25
+    PRINT           shift and go to state 26
+    DO              shift and go to state 27
+    STRUCT          shift and go to state 28
+    INTDEC          shift and go to state 29
+    DOUBLEDEC       shift and go to state 30
+    STRINGDEC       shift and go to state 31
+    BOOLDEC         shift and go to state 32
+    CHARDEC         shift and go to state 33
+
+  ! MINUS           [ reduce using rule 73 (empty -> .) ]
+
+    stmts                          shift and go to state 1
+    stmt                           shift and go to state 2
+    expr                           shift and go to state 4
+    empty                          shift and go to state 5
+    var_dec                        shift and go to state 6
+    var_initialize                 shift and go to state 7
+    var_assign                     shift and go to state 8
+    var_access                     shift and go to state 9
+    function_call                  shift and go to state 10
+    loop                           shift and go to state 11
+    struct_definition              shift and go to state 12
+    struct_attribute_initialize    shift and go to state 13
+    unary_op                       shift and go to state 14
+    struct_access                  shift and go to state 22
+    identifier                     shift and go to state 24
+
+state 1
+
+    (0) S' -> stmts .
+
+
+
+state 2
+
+    (1) stmts -> stmt . SEMICOLON stmts
+
+    SEMICOLON       shift and go to state 34
+
+
+state 3
+
+    (2) stmts -> COMMENT .
+
+    $end            reduce using rule 2 (stmts -> COMMENT .)
+    RBRACE          reduce using rule 2 (stmts -> COMMENT .)
+
+
+state 4
+
+    (4) stmt -> expr .
+    (36) expr -> expr . MULTIPLY expr
+    (37) expr -> expr . DIVIDE expr
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . MOD expr
+    (41) expr -> expr . EXPONENT expr
+    (57) expr -> expr . conditional_operators expr
+    (59) conditional_operators -> . EQEQ
+    (60) conditional_operators -> . LESS
+    (61) conditional_operators -> . GREATER
+    (62) conditional_operators -> . AND
+    (63) conditional_operators -> . OR
+    (64) conditional_operators -> . GREATEREQ
+    (65) conditional_operators -> . LESSEQ
+    (66) conditional_operators -> . NOTEQ
+
+    SEMICOLON       reduce using rule 4 (stmt -> expr .)
+    MULTIPLY        shift and go to state 35
+    DIVIDE          shift and go to state 36
+    PLUS            shift and go to state 37
+    MINUS           shift and go to state 38
+    MOD             shift and go to state 39
+    EXPONENT        shift and go to state 40
+    EQEQ            shift and go to state 42
+    LESS            shift and go to state 43
+    GREATER         shift and go to state 44
+    AND             shift and go to state 45
+    OR              shift and go to state 46
+    GREATEREQ       shift and go to state 47
+    LESSEQ          shift and go to state 48
+    NOTEQ           shift and go to state 49
+
+    conditional_operators          shift and go to state 41
+
+state 5
+
+    (5) stmt -> empty .
+    (51) expr -> empty .
+
+  ! reduce/reduce conflict for SEMICOLON resolved using rule 5 (stmt -> empty .)
+    SEMICOLON       reduce using rule 5 (stmt -> empty .)
+    MULTIPLY        reduce using rule 51 (expr -> empty .)
+    DIVIDE          reduce using rule 51 (expr -> empty .)
+    PLUS            reduce using rule 51 (expr -> empty .)
+    MINUS           reduce using rule 51 (expr -> empty .)
+    MOD             reduce using rule 51 (expr -> empty .)
+    EXPONENT        reduce using rule 51 (expr -> empty .)
+    EQEQ            reduce using rule 51 (expr -> empty .)
+    LESS            reduce using rule 51 (expr -> empty .)
+    GREATER         reduce using rule 51 (expr -> empty .)
+    AND             reduce using rule 51 (expr -> empty .)
+    OR              reduce using rule 51 (expr -> empty .)
+    GREATEREQ       reduce using rule 51 (expr -> empty .)
+    LESSEQ          reduce using rule 51 (expr -> empty .)
+    NOTEQ           reduce using rule 51 (expr -> empty .)
+
+  ! SEMICOLON       [ reduce using rule 51 (expr -> empty .) ]
+
+
+state 6
+
+    (6) stmt -> var_dec .
+
+    SEMICOLON       reduce using rule 6 (stmt -> var_dec .)
+
+
+state 7
+
+    (7) stmt -> var_initialize .
+
+    SEMICOLON       reduce using rule 7 (stmt -> var_initialize .)
+
+
+state 8
+
+    (8) stmt -> var_assign .
+
+    SEMICOLON       reduce using rule 8 (stmt -> var_assign .)
+
+
+state 9
+
+    (9) stmt -> var_access .
+    (49) expr -> var_access .
+    (52) unary_op -> var_access . INCREMENT
+    (53) unary_op -> var_access . DECREMENT
+
+  ! reduce/reduce conflict for SEMICOLON resolved using rule 9 (stmt -> var_access .)
+    SEMICOLON       reduce using rule 9 (stmt -> var_access .)
+    MULTIPLY        reduce using rule 49 (expr -> var_access .)
+    DIVIDE          reduce using rule 49 (expr -> var_access .)
+    PLUS            reduce using rule 49 (expr -> var_access .)
+    MINUS           reduce using rule 49 (expr -> var_access .)
+    MOD             reduce using rule 49 (expr -> var_access .)
+    EXPONENT        reduce using rule 49 (expr -> var_access .)
+    EQEQ            reduce using rule 49 (expr -> var_access .)
+    LESS            reduce using rule 49 (expr -> var_access .)
+    GREATER         reduce using rule 49 (expr -> var_access .)
+    AND             reduce using rule 49 (expr -> var_access .)
+    OR              reduce using rule 49 (expr -> var_access .)
+    GREATEREQ       reduce using rule 49 (expr -> var_access .)
+    LESSEQ          reduce using rule 49 (expr -> var_access .)
+    NOTEQ           reduce using rule 49 (expr -> var_access .)
+    INCREMENT       shift and go to state 50
+    DECREMENT       shift and go to state 51
+
+  ! SEMICOLON       [ reduce using rule 49 (expr -> var_access .) ]
+
+
+state 10
+
+    (10) stmt -> function_call .
+
+    SEMICOLON       reduce using rule 10 (stmt -> function_call .)
+
+
+state 11
+
+    (11) stmt -> loop .
+
+    SEMICOLON       reduce using rule 11 (stmt -> loop .)
+
+
+state 12
+
+    (12) stmt -> struct_definition .
+
+    SEMICOLON       reduce using rule 12 (stmt -> struct_definition .)
+
+
+state 13
+
+    (13) stmt -> struct_attribute_initialize .
+
+    SEMICOLON       reduce using rule 13 (stmt -> struct_attribute_initialize .)
+
+
+state 14
+
+    (14) stmt -> unary_op .
+    (35) expr -> unary_op .
+
+  ! reduce/reduce conflict for SEMICOLON resolved using rule 14 (stmt -> unary_op .)
+    SEMICOLON       reduce using rule 14 (stmt -> unary_op .)
+    MULTIPLY        reduce using rule 35 (expr -> unary_op .)
+    DIVIDE          reduce using rule 35 (expr -> unary_op .)
+    PLUS            reduce using rule 35 (expr -> unary_op .)
+    MINUS           reduce using rule 35 (expr -> unary_op .)
+    MOD             reduce using rule 35 (expr -> unary_op .)
+    EXPONENT        reduce using rule 35 (expr -> unary_op .)
+    EQEQ            reduce using rule 35 (expr -> unary_op .)
+    LESS            reduce using rule 35 (expr -> unary_op .)
+    GREATER         reduce using rule 35 (expr -> unary_op .)
+    AND             reduce using rule 35 (expr -> unary_op .)
+    OR              reduce using rule 35 (expr -> unary_op .)
+    GREATEREQ       reduce using rule 35 (expr -> unary_op .)
+    LESSEQ          reduce using rule 35 (expr -> unary_op .)
+    NOTEQ           reduce using rule 35 (expr -> unary_op .)
+
+  ! SEMICOLON       [ reduce using rule 35 (expr -> unary_op .) ]
+
+
+state 15
+
+    (34) expr -> LPAR . expr RPAR
+    (34) expr -> . LPAR expr RPAR
+    (35) expr -> . unary_op
+    (36) expr -> . expr MULTIPLY expr
+    (37) expr -> . expr DIVIDE expr
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr MOD expr
+    (41) expr -> . expr EXPONENT expr
+    (42) expr -> . DOUBLE
+    (43) expr -> . INT
+    (44) expr -> . MINUS DOUBLE
+    (45) expr -> . MINUS INT
+    (46) expr -> . STRING
+    (47) expr -> . TRUE
+    (48) expr -> . FALSE
+    (49) expr -> . var_access
+    (50) expr -> . struct_access
+    (51) expr -> . empty
+    (57) expr -> . expr conditional_operators expr
+    (58) expr -> . NOT expr
+    (52) unary_op -> . var_access INCREMENT
+    (53) unary_op -> . var_access DECREMENT
+    (54) unary_op -> . struct_access INCREMENT
+    (55) unary_op -> . struct_access DECREMENT
+    (56) unary_op -> . MINUS var_access
+    (21) var_access -> . NAME
+    (22) struct_access -> . NAME DOT NAME
+    (73) empty -> .
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    LPAR            shift and go to state 15
+    DOUBLE          shift and go to state 17
+    INT             shift and go to state 18
+    MINUS           shift and go to state 16
+    STRING          shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    NOT             shift and go to state 23
+    NAME            shift and go to state 56
+    RPAR            reduce using rule 73 (empty -> .)
+    MULTIPLY        reduce using rule 73 (empty -> .)
+    DIVIDE          reduce using rule 73 (empty -> .)
+    PLUS            reduce using rule 73 (empty -> .)
+    MOD             reduce using rule 73 (empty -> .)
+    EXPONENT        reduce using rule 73 (empty -> .)
+    EQEQ            reduce using rule 73 (empty -> .)
+    LESS            reduce using rule 73 (empty -> .)
+    GREATER         reduce using rule 73 (empty -> .)
+    AND             reduce using rule 73 (empty -> .)
+    OR              reduce using rule 73 (empty -> .)
+    GREATEREQ       reduce using rule 73 (empty -> .)
+    LESSEQ          reduce using rule 73 (empty -> .)
+    NOTEQ           reduce using rule 73 (empty -> .)
+
+  ! MINUS           [ reduce using rule 73 (empty -> .) ]
+
+    expr                           shift and go to state 52
+    unary_op                       shift and go to state 53
+    var_access                     shift and go to state 54
+    struct_access                  shift and go to state 22
+    empty                          shift and go to state 55
+
+state 16
+
+    (44) expr -> MINUS . DOUBLE
+    (45) expr -> MINUS . INT
+    (56) unary_op -> MINUS . var_access
+    (21) var_access -> . NAME
+
+    DOUBLE          shift and go to state 57
+    INT             shift and go to state 58
+    NAME            shift and go to state 60
+
+    var_access                     shift and go to state 59
+
+state 17
+
+    (42) expr -> DOUBLE .
+
+    MULTIPLY        reduce using rule 42 (expr -> DOUBLE .)
+    DIVIDE          reduce using rule 42 (expr -> DOUBLE .)
+    PLUS            reduce using rule 42 (expr -> DOUBLE .)
+    MINUS           reduce using rule 42 (expr -> DOUBLE .)
+    MOD             reduce using rule 42 (expr -> DOUBLE .)
+    EXPONENT        reduce using rule 42 (expr -> DOUBLE .)
+    EQEQ            reduce using rule 42 (expr -> DOUBLE .)
+    LESS            reduce using rule 42 (expr -> DOUBLE .)
+    GREATER         reduce using rule 42 (expr -> DOUBLE .)
+    AND             reduce using rule 42 (expr -> DOUBLE .)
+    OR              reduce using rule 42 (expr -> DOUBLE .)
+    GREATEREQ       reduce using rule 42 (expr -> DOUBLE .)
+    LESSEQ          reduce using rule 42 (expr -> DOUBLE .)
+    NOTEQ           reduce using rule 42 (expr -> DOUBLE .)
+    SEMICOLON       reduce using rule 42 (expr -> DOUBLE .)
+    RPAR            reduce using rule 42 (expr -> DOUBLE .)
+    COMMA           reduce using rule 42 (expr -> DOUBLE .)
+
+
+state 18
+
+    (43) expr -> INT .
+
+    MULTIPLY        reduce using rule 43 (expr -> INT .)
+    DIVIDE          reduce using rule 43 (expr -> INT .)
+    PLUS            reduce using rule 43 (expr -> INT .)
+    MINUS           reduce using rule 43 (expr -> INT .)
+    MOD             reduce using rule 43 (expr -> INT .)
+    EXPONENT        reduce using rule 43 (expr -> INT .)
+    EQEQ            reduce using rule 43 (expr -> INT .)
+    LESS            reduce using rule 43 (expr -> INT .)
+    GREATER         reduce using rule 43 (expr -> INT .)
+    AND             reduce using rule 43 (expr -> INT .)
+    OR              reduce using rule 43 (expr -> INT .)
+    GREATEREQ       reduce using rule 43 (expr -> INT .)
+    LESSEQ          reduce using rule 43 (expr -> INT .)
+    NOTEQ           reduce using rule 43 (expr -> INT .)
+    SEMICOLON       reduce using rule 43 (expr -> INT .)
+    RPAR            reduce using rule 43 (expr -> INT .)
+    COMMA           reduce using rule 43 (expr -> INT .)
+
+
+state 19
+
+    (46) expr -> STRING .
+
+    MULTIPLY        reduce using rule 46 (expr -> STRING .)
+    DIVIDE          reduce using rule 46 (expr -> STRING .)
+    PLUS            reduce using rule 46 (expr -> STRING .)
+    MINUS           reduce using rule 46 (expr -> STRING .)
+    MOD             reduce using rule 46 (expr -> STRING .)
+    EXPONENT        reduce using rule 46 (expr -> STRING .)
+    EQEQ            reduce using rule 46 (expr -> STRING .)
+    LESS            reduce using rule 46 (expr -> STRING .)
+    GREATER         reduce using rule 46 (expr -> STRING .)
+    AND             reduce using rule 46 (expr -> STRING .)
+    OR              reduce using rule 46 (expr -> STRING .)
+    GREATEREQ       reduce using rule 46 (expr -> STRING .)
+    LESSEQ          reduce using rule 46 (expr -> STRING .)
+    NOTEQ           reduce using rule 46 (expr -> STRING .)
+    SEMICOLON       reduce using rule 46 (expr -> STRING .)
+    RPAR            reduce using rule 46 (expr -> STRING .)
+    COMMA           reduce using rule 46 (expr -> STRING .)
+
+
+state 20
+
+    (47) expr -> TRUE .
+
+    MULTIPLY        reduce using rule 47 (expr -> TRUE .)
+    DIVIDE          reduce using rule 47 (expr -> TRUE .)
+    PLUS            reduce using rule 47 (expr -> TRUE .)
+    MINUS           reduce using rule 47 (expr -> TRUE .)
+    MOD             reduce using rule 47 (expr -> TRUE .)
+    EXPONENT        reduce using rule 47 (expr -> TRUE .)
+    EQEQ            reduce using rule 47 (expr -> TRUE .)
+    LESS            reduce using rule 47 (expr -> TRUE .)
+    GREATER         reduce using rule 47 (expr -> TRUE .)
+    AND             reduce using rule 47 (expr -> TRUE .)
+    OR              reduce using rule 47 (expr -> TRUE .)
+    GREATEREQ       reduce using rule 47 (expr -> TRUE .)
+    LESSEQ          reduce using rule 47 (expr -> TRUE .)
+    NOTEQ           reduce using rule 47 (expr -> TRUE .)
+    SEMICOLON       reduce using rule 47 (expr -> TRUE .)
+    RPAR            reduce using rule 47 (expr -> TRUE .)
+    COMMA           reduce using rule 47 (expr -> TRUE .)
+
+
+state 21
+
+    (48) expr -> FALSE .
+
+    MULTIPLY        reduce using rule 48 (expr -> FALSE .)
+    DIVIDE          reduce using rule 48 (expr -> FALSE .)
+    PLUS            reduce using rule 48 (expr -> FALSE .)
+    MINUS           reduce using rule 48 (expr -> FALSE .)
+    MOD             reduce using rule 48 (expr -> FALSE .)
+    EXPONENT        reduce using rule 48 (expr -> FALSE .)
+    EQEQ            reduce using rule 48 (expr -> FALSE .)
+    LESS            reduce using rule 48 (expr -> FALSE .)
+    GREATER         reduce using rule 48 (expr -> FALSE .)
+    AND             reduce using rule 48 (expr -> FALSE .)
+    OR              reduce using rule 48 (expr -> FALSE .)
+    GREATEREQ       reduce using rule 48 (expr -> FALSE .)
+    LESSEQ          reduce using rule 48 (expr -> FALSE .)
+    NOTEQ           reduce using rule 48 (expr -> FALSE .)
+    SEMICOLON       reduce using rule 48 (expr -> FALSE .)
+    RPAR            reduce using rule 48 (expr -> FALSE .)
+    COMMA           reduce using rule 48 (expr -> FALSE .)
+
+
+state 22
+
+    (50) expr -> struct_access .
+    (54) unary_op -> struct_access . INCREMENT
+    (55) unary_op -> struct_access . DECREMENT
+
+    MULTIPLY        reduce using rule 50 (expr -> struct_access .)
+    DIVIDE          reduce using rule 50 (expr -> struct_access .)
+    PLUS            reduce using rule 50 (expr -> struct_access .)
+    MINUS           reduce using rule 50 (expr -> struct_access .)
+    MOD             reduce using rule 50 (expr -> struct_access .)
+    EXPONENT        reduce using rule 50 (expr -> struct_access .)
+    EQEQ            reduce using rule 50 (expr -> struct_access .)
+    LESS            reduce using rule 50 (expr -> struct_access .)
+    GREATER         reduce using rule 50 (expr -> struct_access .)
+    AND             reduce using rule 50 (expr -> struct_access .)
+    OR              reduce using rule 50 (expr -> struct_access .)
+    GREATEREQ       reduce using rule 50 (expr -> struct_access .)
+    LESSEQ          reduce using rule 50 (expr -> struct_access .)
+    NOTEQ           reduce using rule 50 (expr -> struct_access .)
+    SEMICOLON       reduce using rule 50 (expr -> struct_access .)
+    RPAR            reduce using rule 50 (expr -> struct_access .)
+    COMMA           reduce using rule 50 (expr -> struct_access .)
+    INCREMENT       shift and go to state 61
+    DECREMENT       shift and go to state 62
+
+
+state 23
+
+    (58) expr -> NOT . expr
+    (34) expr -> . LPAR expr RPAR
+    (35) expr -> . unary_op
+    (36) expr -> . expr MULTIPLY expr
+    (37) expr -> . expr DIVIDE expr
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr MOD expr
+    (41) expr -> . expr EXPONENT expr
+    (42) expr -> . DOUBLE
+    (43) expr -> . INT
+    (44) expr -> . MINUS DOUBLE
+    (45) expr -> . MINUS INT
+    (46) expr -> . STRING
+    (47) expr -> . TRUE
+    (48) expr -> . FALSE
+    (49) expr -> . var_access
+    (50) expr -> . struct_access
+    (51) expr -> . empty
+    (57) expr -> . expr conditional_operators expr
+    (58) expr -> . NOT expr
+    (52) unary_op -> . var_access INCREMENT
+    (53) unary_op -> . var_access DECREMENT
+    (54) unary_op -> . struct_access INCREMENT
+    (55) unary_op -> . struct_access DECREMENT
+    (56) unary_op -> . MINUS var_access
+    (21) var_access -> . NAME
+    (22) struct_access -> . NAME DOT NAME
+    (73) empty -> .
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    LPAR            shift and go to state 15
+    DOUBLE          shift and go to state 17
+    INT             shift and go to state 18
+    MINUS           shift and go to state 16
+    STRING          shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    NOT             shift and go to state 23
+    NAME            shift and go to state 56
+    MULTIPLY        reduce using rule 73 (empty -> .)
+    DIVIDE          reduce using rule 73 (empty -> .)
+    PLUS            reduce using rule 73 (empty -> .)
+    MOD             reduce using rule 73 (empty -> .)
+    EXPONENT        reduce using rule 73 (empty -> .)
+    EQEQ            reduce using rule 73 (empty -> .)
+    LESS            reduce using rule 73 (empty -> .)
+    GREATER         reduce using rule 73 (empty -> .)
+    AND             reduce using rule 73 (empty -> .)
+    OR              reduce using rule 73 (empty -> .)
+    GREATEREQ       reduce using rule 73 (empty -> .)
+    LESSEQ          reduce using rule 73 (empty -> .)
+    NOTEQ           reduce using rule 73 (empty -> .)
+    SEMICOLON       reduce using rule 73 (empty -> .)
+    RPAR            reduce using rule 73 (empty -> .)
+    COMMA           reduce using rule 73 (empty -> .)
+
+  ! MINUS           [ reduce using rule 73 (empty -> .) ]
+
+    expr                           shift and go to state 63
+    unary_op                       shift and go to state 53
+    var_access                     shift and go to state 54
+    struct_access                  shift and go to state 22
+    empty                          shift and go to state 55
+
+state 24
+
+    (24) var_dec -> identifier . NAME
+    (25) var_initialize -> identifier . NAME EQUALS expr
+    (26) var_initialize -> identifier . NAME EQUALS NAME
+
+    NAME            shift and go to state 64
+
+
+state 25
+
+    (23) var_assign -> NAME . EQUALS expr
+    (21) var_access -> NAME .
+    (33) struct_attribute_initialize -> NAME . DOT NAME EQUALS expr
+    (22) struct_access -> NAME . DOT NAME
+    (32) identifier -> NAME .
+
+    EQUALS          shift and go to state 65
+    INCREMENT       reduce using rule 21 (var_access -> NAME .)
+    DECREMENT       reduce using rule 21 (var_access -> NAME .)
+    SEMICOLON       reduce using rule 21 (var_access -> NAME .)
+    MULTIPLY        reduce using rule 21 (var_access -> NAME .)
+    DIVIDE          reduce using rule 21 (var_access -> NAME .)
+    PLUS            reduce using rule 21 (var_access -> NAME .)
+    MINUS           reduce using rule 21 (var_access -> NAME .)
+    MOD             reduce using rule 21 (var_access -> NAME .)
+    EXPONENT        reduce using rule 21 (var_access -> NAME .)
+    EQEQ            reduce using rule 21 (var_access -> NAME .)
+    LESS            reduce using rule 21 (var_access -> NAME .)
+    GREATER         reduce using rule 21 (var_access -> NAME .)
+    AND             reduce using rule 21 (var_access -> NAME .)
+    OR              reduce using rule 21 (var_access -> NAME .)
+    GREATEREQ       reduce using rule 21 (var_access -> NAME .)
+    LESSEQ          reduce using rule 21 (var_access -> NAME .)
+    NOTEQ           reduce using rule 21 (var_access -> NAME .)
+    DOT             shift and go to state 66
+    NAME            reduce using rule 32 (identifier -> NAME .)
+
+
+state 26
+
+    (68) function_call -> PRINT . LPAR opt_args RPAR
+
+    LPAR            shift and go to state 67
+
+
+state 27
+
+    (67) loop -> DO . LBRACE stmts RBRACE WHILE LPAR expr RPAR
+
+    LBRACE          shift and go to state 68
+
+
+state 28
+
+    (15) struct_definition -> STRUCT . NAME EQUALS LBRACE attribute_dec RBRACE
+
+    NAME            shift and go to state 69
+
+
+state 29
+
+    (27) identifier -> INTDEC .
+
+    NAME            reduce using rule 27 (identifier -> INTDEC .)
+
+
+state 30
+
+    (28) identifier -> DOUBLEDEC .
+
+    NAME            reduce using rule 28 (identifier -> DOUBLEDEC .)
+
+
+state 31
+
+    (29) identifier -> STRINGDEC .
+
+    NAME            reduce using rule 29 (identifier -> STRINGDEC .)
+
+
+state 32
+
+    (30) identifier -> BOOLDEC .
+
+    NAME            reduce using rule 30 (identifier -> BOOLDEC .)
+
+
+state 33
+
+    (31) identifier -> CHARDEC .
+
+    NAME            reduce using rule 31 (identifier -> CHARDEC .)
+
+
+state 34
+
+    (1) stmts -> stmt SEMICOLON . stmts
+    (1) stmts -> . stmt SEMICOLON stmts
+    (2) stmts -> . COMMENT
+    (3) stmts -> .
+    (4) stmt -> . expr
+    (5) stmt -> . empty
+    (6) stmt -> . var_dec
+    (7) stmt -> . var_initialize
+    (8) stmt -> . var_assign
+    (9) stmt -> . var_access
+    (10) stmt -> . function_call
+    (11) stmt -> . loop
+    (12) stmt -> . struct_definition
+    (13) stmt -> . struct_attribute_initialize
+    (14) stmt -> . unary_op
+    (34) expr -> . LPAR expr RPAR
+    (35) expr -> . unary_op
+    (36) expr -> . expr MULTIPLY expr
+    (37) expr -> . expr DIVIDE expr
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr MOD expr
+    (41) expr -> . expr EXPONENT expr
+    (42) expr -> . DOUBLE
+    (43) expr -> . INT
+    (44) expr -> . MINUS DOUBLE
+    (45) expr -> . MINUS INT
+    (46) expr -> . STRING
+    (47) expr -> . TRUE
+    (48) expr -> . FALSE
+    (49) expr -> . var_access
+    (50) expr -> . struct_access
+    (51) expr -> . empty
+    (57) expr -> . expr conditional_operators expr
+    (58) expr -> . NOT expr
+    (73) empty -> .
+    (24) var_dec -> . identifier NAME
+    (25) var_initialize -> . identifier NAME EQUALS expr
+    (26) var_initialize -> . identifier NAME EQUALS NAME
+    (23) var_assign -> . NAME EQUALS expr
+    (21) var_access -> . NAME
+    (68) function_call -> . PRINT LPAR opt_args RPAR
+    (67) loop -> . DO LBRACE stmts RBRACE WHILE LPAR expr RPAR
+    (15) struct_definition -> . STRUCT NAME EQUALS LBRACE attribute_dec RBRACE
+    (33) struct_attribute_initialize -> . NAME DOT NAME EQUALS expr
+    (52) unary_op -> . var_access INCREMENT
+    (53) unary_op -> . var_access DECREMENT
+    (54) unary_op -> . struct_access INCREMENT
+    (55) unary_op -> . struct_access DECREMENT
+    (56) unary_op -> . MINUS var_access
+    (22) struct_access -> . NAME DOT NAME
+    (27) identifier -> . INTDEC
+    (28) identifier -> . DOUBLEDEC
+    (29) identifier -> . STRINGDEC
+    (30) identifier -> . BOOLDEC
+    (31) identifier -> . CHARDEC
+    (32) identifier -> . NAME
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    COMMENT         shift and go to state 3
+    $end            reduce using rule 3 (stmts -> .)
+    RBRACE          reduce using rule 3 (stmts -> .)
+    LPAR            shift and go to state 15
+    DOUBLE          shift and go to state 17
+    INT             shift and go to state 18
+    MINUS           shift and go to state 16
+    STRING          shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    NOT             shift and go to state 23
+    SEMICOLON       reduce using rule 73 (empty -> .)
+    MULTIPLY        reduce using rule 73 (empty -> .)
+    DIVIDE          reduce using rule 73 (empty -> .)
+    PLUS            reduce using rule 73 (empty -> .)
+    MOD             reduce using rule 73 (empty -> .)
+    EXPONENT        reduce using rule 73 (empty -> .)
+    EQEQ            reduce using rule 73 (empty -> .)
+    LESS            reduce using rule 73 (empty -> .)
+    GREATER         reduce using rule 73 (empty -> .)
+    AND             reduce using rule 73 (empty -> .)
+    OR              reduce using rule 73 (empty -> .)
+    GREATEREQ       reduce using rule 73 (empty -> .)
+    LESSEQ          reduce using rule 73 (empty -> .)
+    NOTEQ           reduce using rule 73 (empty -> .)
+    NAME            shift and go to state 25
+    PRINT           shift and go to state 26
+    DO              shift and go to state 27
+    STRUCT          shift and go to state 28
+    INTDEC          shift and go to state 29
+    DOUBLEDEC       shift and go to state 30
+    STRINGDEC       shift and go to state 31
+    BOOLDEC         shift and go to state 32
+    CHARDEC         shift and go to state 33
+
+  ! MINUS           [ reduce using rule 73 (empty -> .) ]
+
+    stmt                           shift and go to state 2
+    stmts                          shift and go to state 70
+    expr                           shift and go to state 4
+    empty                          shift and go to state 5
+    var_dec                        shift and go to state 6
+    var_initialize                 shift and go to state 7
+    var_assign                     shift and go to state 8
+    var_access                     shift and go to state 9
+    function_call                  shift and go to state 10
+    loop                           shift and go to state 11
+    struct_definition              shift and go to state 12
+    struct_attribute_initialize    shift and go to state 13
+    unary_op                       shift and go to state 14
+    struct_access                  shift and go to state 22
+    identifier                     shift and go to state 24
+
+state 35
+
+    (36) expr -> expr MULTIPLY . expr
+    (34) expr -> . LPAR expr RPAR
+    (35) expr -> . unary_op
+    (36) expr -> . expr MULTIPLY expr
+    (37) expr -> . expr DIVIDE expr
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr MOD expr
+    (41) expr -> . expr EXPONENT expr
+    (42) expr -> . DOUBLE
+    (43) expr -> . INT
+    (44) expr -> . MINUS DOUBLE
+    (45) expr -> . MINUS INT
+    (46) expr -> . STRING
+    (47) expr -> . TRUE
+    (48) expr -> . FALSE
+    (49) expr -> . var_access
+    (50) expr -> . struct_access
+    (51) expr -> . empty
+    (57) expr -> . expr conditional_operators expr
+    (58) expr -> . NOT expr
+    (52) unary_op -> . var_access INCREMENT
+    (53) unary_op -> . var_access DECREMENT
+    (54) unary_op -> . struct_access INCREMENT
+    (55) unary_op -> . struct_access DECREMENT
+    (56) unary_op -> . MINUS var_access
+    (21) var_access -> . NAME
+    (22) struct_access -> . NAME DOT NAME
+    (73) empty -> .
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    LPAR            shift and go to state 15
+    DOUBLE          shift and go to state 17
+    INT             shift and go to state 18
+    MINUS           shift and go to state 16
+    STRING          shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    NOT             shift and go to state 23
+    NAME            shift and go to state 56
+    MULTIPLY        reduce using rule 73 (empty -> .)
+    DIVIDE          reduce using rule 73 (empty -> .)
+    PLUS            reduce using rule 73 (empty -> .)
+    MOD             reduce using rule 73 (empty -> .)
+    EXPONENT        reduce using rule 73 (empty -> .)
+    EQEQ            reduce using rule 73 (empty -> .)
+    LESS            reduce using rule 73 (empty -> .)
+    GREATER         reduce using rule 73 (empty -> .)
+    AND             reduce using rule 73 (empty -> .)
+    OR              reduce using rule 73 (empty -> .)
+    GREATEREQ       reduce using rule 73 (empty -> .)
+    LESSEQ          reduce using rule 73 (empty -> .)
+    NOTEQ           reduce using rule 73 (empty -> .)
+    SEMICOLON       reduce using rule 73 (empty -> .)
+    RPAR            reduce using rule 73 (empty -> .)
+    COMMA           reduce using rule 73 (empty -> .)
+
+  ! MINUS           [ reduce using rule 73 (empty -> .) ]
+
+    expr                           shift and go to state 71
+    unary_op                       shift and go to state 53
+    var_access                     shift and go to state 54
+    struct_access                  shift and go to state 22
+    empty                          shift and go to state 55
+
+state 36
+
+    (37) expr -> expr DIVIDE . expr
+    (34) expr -> . LPAR expr RPAR
+    (35) expr -> . unary_op
+    (36) expr -> . expr MULTIPLY expr
+    (37) expr -> . expr DIVIDE expr
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr MOD expr
+    (41) expr -> . expr EXPONENT expr
+    (42) expr -> . DOUBLE
+    (43) expr -> . INT
+    (44) expr -> . MINUS DOUBLE
+    (45) expr -> . MINUS INT
+    (46) expr -> . STRING
+    (47) expr -> . TRUE
+    (48) expr -> . FALSE
+    (49) expr -> . var_access
+    (50) expr -> . struct_access
+    (51) expr -> . empty
+    (57) expr -> . expr conditional_operators expr
+    (58) expr -> . NOT expr
+    (52) unary_op -> . var_access INCREMENT
+    (53) unary_op -> . var_access DECREMENT
+    (54) unary_op -> . struct_access INCREMENT
+    (55) unary_op -> . struct_access DECREMENT
+    (56) unary_op -> . MINUS var_access
+    (21) var_access -> . NAME
+    (22) struct_access -> . NAME DOT NAME
+    (73) empty -> .
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    LPAR            shift and go to state 15
+    DOUBLE          shift and go to state 17
+    INT             shift and go to state 18
+    MINUS           shift and go to state 16
+    STRING          shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    NOT             shift and go to state 23
+    NAME            shift and go to state 56
+    MULTIPLY        reduce using rule 73 (empty -> .)
+    DIVIDE          reduce using rule 73 (empty -> .)
+    PLUS            reduce using rule 73 (empty -> .)
+    MOD             reduce using rule 73 (empty -> .)
+    EXPONENT        reduce using rule 73 (empty -> .)
+    EQEQ            reduce using rule 73 (empty -> .)
+    LESS            reduce using rule 73 (empty -> .)
+    GREATER         reduce using rule 73 (empty -> .)
+    AND             reduce using rule 73 (empty -> .)
+    OR              reduce using rule 73 (empty -> .)
+    GREATEREQ       reduce using rule 73 (empty -> .)
+    LESSEQ          reduce using rule 73 (empty -> .)
+    NOTEQ           reduce using rule 73 (empty -> .)
+    SEMICOLON       reduce using rule 73 (empty -> .)
+    RPAR            reduce using rule 73 (empty -> .)
+    COMMA           reduce using rule 73 (empty -> .)
+
+  ! MINUS           [ reduce using rule 73 (empty -> .) ]
+
+    expr                           shift and go to state 72
+    unary_op                       shift and go to state 53
+    var_access                     shift and go to state 54
+    struct_access                  shift and go to state 22
+    empty                          shift and go to state 55
+
+state 37
+
+    (38) expr -> expr PLUS . expr
+    (34) expr -> . LPAR expr RPAR
+    (35) expr -> . unary_op
+    (36) expr -> . expr MULTIPLY expr
+    (37) expr -> . expr DIVIDE expr
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr MOD expr
+    (41) expr -> . expr EXPONENT expr
+    (42) expr -> . DOUBLE
+    (43) expr -> . INT
+    (44) expr -> . MINUS DOUBLE
+    (45) expr -> . MINUS INT
+    (46) expr -> . STRING
+    (47) expr -> . TRUE
+    (48) expr -> . FALSE
+    (49) expr -> . var_access
+    (50) expr -> . struct_access
+    (51) expr -> . empty
+    (57) expr -> . expr conditional_operators expr
+    (58) expr -> . NOT expr
+    (52) unary_op -> . var_access INCREMENT
+    (53) unary_op -> . var_access DECREMENT
+    (54) unary_op -> . struct_access INCREMENT
+    (55) unary_op -> . struct_access DECREMENT
+    (56) unary_op -> . MINUS var_access
+    (21) var_access -> . NAME
+    (22) struct_access -> . NAME DOT NAME
+    (73) empty -> .
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    LPAR            shift and go to state 15
+    DOUBLE          shift and go to state 17
+    INT             shift and go to state 18
+    MINUS           shift and go to state 16
+    STRING          shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    NOT             shift and go to state 23
+    NAME            shift and go to state 56
+    MULTIPLY        reduce using rule 73 (empty -> .)
+    DIVIDE          reduce using rule 73 (empty -> .)
+    PLUS            reduce using rule 73 (empty -> .)
+    MOD             reduce using rule 73 (empty -> .)
+    EXPONENT        reduce using rule 73 (empty -> .)
+    EQEQ            reduce using rule 73 (empty -> .)
+    LESS            reduce using rule 73 (empty -> .)
+    GREATER         reduce using rule 73 (empty -> .)
+    AND             reduce using rule 73 (empty -> .)
+    OR              reduce using rule 73 (empty -> .)
+    GREATEREQ       reduce using rule 73 (empty -> .)
+    LESSEQ          reduce using rule 73 (empty -> .)
+    NOTEQ           reduce using rule 73 (empty -> .)
+    SEMICOLON       reduce using rule 73 (empty -> .)
+    RPAR            reduce using rule 73 (empty -> .)
+    COMMA           reduce using rule 73 (empty -> .)
+
+  ! MINUS           [ reduce using rule 73 (empty -> .) ]
+
+    expr                           shift and go to state 73
+    unary_op                       shift and go to state 53
+    var_access                     shift and go to state 54
+    struct_access                  shift and go to state 22
+    empty                          shift and go to state 55
+
+state 38
+
+    (39) expr -> expr MINUS . expr
+    (34) expr -> . LPAR expr RPAR
+    (35) expr -> . unary_op
+    (36) expr -> . expr MULTIPLY expr
+    (37) expr -> . expr DIVIDE expr
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr MOD expr
+    (41) expr -> . expr EXPONENT expr
+    (42) expr -> . DOUBLE
+    (43) expr -> . INT
+    (44) expr -> . MINUS DOUBLE
+    (45) expr -> . MINUS INT
+    (46) expr -> . STRING
+    (47) expr -> . TRUE
+    (48) expr -> . FALSE
+    (49) expr -> . var_access
+    (50) expr -> . struct_access
+    (51) expr -> . empty
+    (57) expr -> . expr conditional_operators expr
+    (58) expr -> . NOT expr
+    (52) unary_op -> . var_access INCREMENT
+    (53) unary_op -> . var_access DECREMENT
+    (54) unary_op -> . struct_access INCREMENT
+    (55) unary_op -> . struct_access DECREMENT
+    (56) unary_op -> . MINUS var_access
+    (21) var_access -> . NAME
+    (22) struct_access -> . NAME DOT NAME
+    (73) empty -> .
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    LPAR            shift and go to state 15
+    DOUBLE          shift and go to state 17
+    INT             shift and go to state 18
+    MINUS           shift and go to state 16
+    STRING          shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    NOT             shift and go to state 23
+    NAME            shift and go to state 56
+    MULTIPLY        reduce using rule 73 (empty -> .)
+    DIVIDE          reduce using rule 73 (empty -> .)
+    PLUS            reduce using rule 73 (empty -> .)
+    MOD             reduce using rule 73 (empty -> .)
+    EXPONENT        reduce using rule 73 (empty -> .)
+    EQEQ            reduce using rule 73 (empty -> .)
+    LESS            reduce using rule 73 (empty -> .)
+    GREATER         reduce using rule 73 (empty -> .)
+    AND             reduce using rule 73 (empty -> .)
+    OR              reduce using rule 73 (empty -> .)
+    GREATEREQ       reduce using rule 73 (empty -> .)
+    LESSEQ          reduce using rule 73 (empty -> .)
+    NOTEQ           reduce using rule 73 (empty -> .)
+    SEMICOLON       reduce using rule 73 (empty -> .)
+    RPAR            reduce using rule 73 (empty -> .)
+    COMMA           reduce using rule 73 (empty -> .)
+
+  ! MINUS           [ reduce using rule 73 (empty -> .) ]
+
+    expr                           shift and go to state 74
+    unary_op                       shift and go to state 53
+    var_access                     shift and go to state 54
+    struct_access                  shift and go to state 22
+    empty                          shift and go to state 55
+
+state 39
+
+    (40) expr -> expr MOD . expr
+    (34) expr -> . LPAR expr RPAR
+    (35) expr -> . unary_op
+    (36) expr -> . expr MULTIPLY expr
+    (37) expr -> . expr DIVIDE expr
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr MOD expr
+    (41) expr -> . expr EXPONENT expr
+    (42) expr -> . DOUBLE
+    (43) expr -> . INT
+    (44) expr -> . MINUS DOUBLE
+    (45) expr -> . MINUS INT
+    (46) expr -> . STRING
+    (47) expr -> . TRUE
+    (48) expr -> . FALSE
+    (49) expr -> . var_access
+    (50) expr -> . struct_access
+    (51) expr -> . empty
+    (57) expr -> . expr conditional_operators expr
+    (58) expr -> . NOT expr
+    (52) unary_op -> . var_access INCREMENT
+    (53) unary_op -> . var_access DECREMENT
+    (54) unary_op -> . struct_access INCREMENT
+    (55) unary_op -> . struct_access DECREMENT
+    (56) unary_op -> . MINUS var_access
+    (21) var_access -> . NAME
+    (22) struct_access -> . NAME DOT NAME
+    (73) empty -> .
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    LPAR            shift and go to state 15
+    DOUBLE          shift and go to state 17
+    INT             shift and go to state 18
+    MINUS           shift and go to state 16
+    STRING          shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    NOT             shift and go to state 23
+    NAME            shift and go to state 56
+    MULTIPLY        reduce using rule 73 (empty -> .)
+    DIVIDE          reduce using rule 73 (empty -> .)
+    PLUS            reduce using rule 73 (empty -> .)
+    MOD             reduce using rule 73 (empty -> .)
+    EXPONENT        reduce using rule 73 (empty -> .)
+    EQEQ            reduce using rule 73 (empty -> .)
+    LESS            reduce using rule 73 (empty -> .)
+    GREATER         reduce using rule 73 (empty -> .)
+    AND             reduce using rule 73 (empty -> .)
+    OR              reduce using rule 73 (empty -> .)
+    GREATEREQ       reduce using rule 73 (empty -> .)
+    LESSEQ          reduce using rule 73 (empty -> .)
+    NOTEQ           reduce using rule 73 (empty -> .)
+    SEMICOLON       reduce using rule 73 (empty -> .)
+    RPAR            reduce using rule 73 (empty -> .)
+    COMMA           reduce using rule 73 (empty -> .)
+
+  ! MINUS           [ reduce using rule 73 (empty -> .) ]
+
+    expr                           shift and go to state 75
+    unary_op                       shift and go to state 53
+    var_access                     shift and go to state 54
+    struct_access                  shift and go to state 22
+    empty                          shift and go to state 55
+
+state 40
+
+    (41) expr -> expr EXPONENT . expr
+    (34) expr -> . LPAR expr RPAR
+    (35) expr -> . unary_op
+    (36) expr -> . expr MULTIPLY expr
+    (37) expr -> . expr DIVIDE expr
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr MOD expr
+    (41) expr -> . expr EXPONENT expr
+    (42) expr -> . DOUBLE
+    (43) expr -> . INT
+    (44) expr -> . MINUS DOUBLE
+    (45) expr -> . MINUS INT
+    (46) expr -> . STRING
+    (47) expr -> . TRUE
+    (48) expr -> . FALSE
+    (49) expr -> . var_access
+    (50) expr -> . struct_access
+    (51) expr -> . empty
+    (57) expr -> . expr conditional_operators expr
+    (58) expr -> . NOT expr
+    (52) unary_op -> . var_access INCREMENT
+    (53) unary_op -> . var_access DECREMENT
+    (54) unary_op -> . struct_access INCREMENT
+    (55) unary_op -> . struct_access DECREMENT
+    (56) unary_op -> . MINUS var_access
+    (21) var_access -> . NAME
+    (22) struct_access -> . NAME DOT NAME
+    (73) empty -> .
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    LPAR            shift and go to state 15
+    DOUBLE          shift and go to state 17
+    INT             shift and go to state 18
+    MINUS           shift and go to state 16
+    STRING          shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    NOT             shift and go to state 23
+    NAME            shift and go to state 56
+    MULTIPLY        reduce using rule 73 (empty -> .)
+    DIVIDE          reduce using rule 73 (empty -> .)
+    PLUS            reduce using rule 73 (empty -> .)
+    MOD             reduce using rule 73 (empty -> .)
+    EXPONENT        reduce using rule 73 (empty -> .)
+    EQEQ            reduce using rule 73 (empty -> .)
+    LESS            reduce using rule 73 (empty -> .)
+    GREATER         reduce using rule 73 (empty -> .)
+    AND             reduce using rule 73 (empty -> .)
+    OR              reduce using rule 73 (empty -> .)
+    GREATEREQ       reduce using rule 73 (empty -> .)
+    LESSEQ          reduce using rule 73 (empty -> .)
+    NOTEQ           reduce using rule 73 (empty -> .)
+    SEMICOLON       reduce using rule 73 (empty -> .)
+    RPAR            reduce using rule 73 (empty -> .)
+    COMMA           reduce using rule 73 (empty -> .)
+
+  ! MINUS           [ reduce using rule 73 (empty -> .) ]
+
+    expr                           shift and go to state 76
+    unary_op                       shift and go to state 53
+    var_access                     shift and go to state 54
+    struct_access                  shift and go to state 22
+    empty                          shift and go to state 55
+
+state 41
+
+    (57) expr -> expr conditional_operators . expr
+    (34) expr -> . LPAR expr RPAR
+    (35) expr -> . unary_op
+    (36) expr -> . expr MULTIPLY expr
+    (37) expr -> . expr DIVIDE expr
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr MOD expr
+    (41) expr -> . expr EXPONENT expr
+    (42) expr -> . DOUBLE
+    (43) expr -> . INT
+    (44) expr -> . MINUS DOUBLE
+    (45) expr -> . MINUS INT
+    (46) expr -> . STRING
+    (47) expr -> . TRUE
+    (48) expr -> . FALSE
+    (49) expr -> . var_access
+    (50) expr -> . struct_access
+    (51) expr -> . empty
+    (57) expr -> . expr conditional_operators expr
+    (58) expr -> . NOT expr
+    (52) unary_op -> . var_access INCREMENT
+    (53) unary_op -> . var_access DECREMENT
+    (54) unary_op -> . struct_access INCREMENT
+    (55) unary_op -> . struct_access DECREMENT
+    (56) unary_op -> . MINUS var_access
+    (21) var_access -> . NAME
+    (22) struct_access -> . NAME DOT NAME
+    (73) empty -> .
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    LPAR            shift and go to state 15
+    DOUBLE          shift and go to state 17
+    INT             shift and go to state 18
+    MINUS           shift and go to state 16
+    STRING          shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    NOT             shift and go to state 23
+    NAME            shift and go to state 56
+    MULTIPLY        reduce using rule 73 (empty -> .)
+    DIVIDE          reduce using rule 73 (empty -> .)
+    PLUS            reduce using rule 73 (empty -> .)
+    MOD             reduce using rule 73 (empty -> .)
+    EXPONENT        reduce using rule 73 (empty -> .)
+    EQEQ            reduce using rule 73 (empty -> .)
+    LESS            reduce using rule 73 (empty -> .)
+    GREATER         reduce using rule 73 (empty -> .)
+    AND             reduce using rule 73 (empty -> .)
+    OR              reduce using rule 73 (empty -> .)
+    GREATEREQ       reduce using rule 73 (empty -> .)
+    LESSEQ          reduce using rule 73 (empty -> .)
+    NOTEQ           reduce using rule 73 (empty -> .)
+    SEMICOLON       reduce using rule 73 (empty -> .)
+    RPAR            reduce using rule 73 (empty -> .)
+    COMMA           reduce using rule 73 (empty -> .)
+
+  ! MINUS           [ reduce using rule 73 (empty -> .) ]
+
+    expr                           shift and go to state 77
+    unary_op                       shift and go to state 53
+    var_access                     shift and go to state 54
+    struct_access                  shift and go to state 22
+    empty                          shift and go to state 55
+
+state 42
+
+    (59) conditional_operators -> EQEQ .
+
+    LPAR            reduce using rule 59 (conditional_operators -> EQEQ .)
+    DOUBLE          reduce using rule 59 (conditional_operators -> EQEQ .)
+    INT             reduce using rule 59 (conditional_operators -> EQEQ .)
+    MINUS           reduce using rule 59 (conditional_operators -> EQEQ .)
+    STRING          reduce using rule 59 (conditional_operators -> EQEQ .)
+    TRUE            reduce using rule 59 (conditional_operators -> EQEQ .)
+    FALSE           reduce using rule 59 (conditional_operators -> EQEQ .)
+    NOT             reduce using rule 59 (conditional_operators -> EQEQ .)
+    NAME            reduce using rule 59 (conditional_operators -> EQEQ .)
+    MULTIPLY        reduce using rule 59 (conditional_operators -> EQEQ .)
+    DIVIDE          reduce using rule 59 (conditional_operators -> EQEQ .)
+    PLUS            reduce using rule 59 (conditional_operators -> EQEQ .)
+    MOD             reduce using rule 59 (conditional_operators -> EQEQ .)
+    EXPONENT        reduce using rule 59 (conditional_operators -> EQEQ .)
+    EQEQ            reduce using rule 59 (conditional_operators -> EQEQ .)
+    LESS            reduce using rule 59 (conditional_operators -> EQEQ .)
+    GREATER         reduce using rule 59 (conditional_operators -> EQEQ .)
+    AND             reduce using rule 59 (conditional_operators -> EQEQ .)
+    OR              reduce using rule 59 (conditional_operators -> EQEQ .)
+    GREATEREQ       reduce using rule 59 (conditional_operators -> EQEQ .)
+    LESSEQ          reduce using rule 59 (conditional_operators -> EQEQ .)
+    NOTEQ           reduce using rule 59 (conditional_operators -> EQEQ .)
+    SEMICOLON       reduce using rule 59 (conditional_operators -> EQEQ .)
+    RPAR            reduce using rule 59 (conditional_operators -> EQEQ .)
+    COMMA           reduce using rule 59 (conditional_operators -> EQEQ .)
+
+
+state 43
+
+    (60) conditional_operators -> LESS .
+
+    LPAR            reduce using rule 60 (conditional_operators -> LESS .)
+    DOUBLE          reduce using rule 60 (conditional_operators -> LESS .)
+    INT             reduce using rule 60 (conditional_operators -> LESS .)
+    MINUS           reduce using rule 60 (conditional_operators -> LESS .)
+    STRING          reduce using rule 60 (conditional_operators -> LESS .)
+    TRUE            reduce using rule 60 (conditional_operators -> LESS .)
+    FALSE           reduce using rule 60 (conditional_operators -> LESS .)
+    NOT             reduce using rule 60 (conditional_operators -> LESS .)
+    NAME            reduce using rule 60 (conditional_operators -> LESS .)
+    MULTIPLY        reduce using rule 60 (conditional_operators -> LESS .)
+    DIVIDE          reduce using rule 60 (conditional_operators -> LESS .)
+    PLUS            reduce using rule 60 (conditional_operators -> LESS .)
+    MOD             reduce using rule 60 (conditional_operators -> LESS .)
+    EXPONENT        reduce using rule 60 (conditional_operators -> LESS .)
+    EQEQ            reduce using rule 60 (conditional_operators -> LESS .)
+    LESS            reduce using rule 60 (conditional_operators -> LESS .)
+    GREATER         reduce using rule 60 (conditional_operators -> LESS .)
+    AND             reduce using rule 60 (conditional_operators -> LESS .)
+    OR              reduce using rule 60 (conditional_operators -> LESS .)
+    GREATEREQ       reduce using rule 60 (conditional_operators -> LESS .)
+    LESSEQ          reduce using rule 60 (conditional_operators -> LESS .)
+    NOTEQ           reduce using rule 60 (conditional_operators -> LESS .)
+    SEMICOLON       reduce using rule 60 (conditional_operators -> LESS .)
+    RPAR            reduce using rule 60 (conditional_operators -> LESS .)
+    COMMA           reduce using rule 60 (conditional_operators -> LESS .)
+
+
+state 44
+
+    (61) conditional_operators -> GREATER .
+
+    LPAR            reduce using rule 61 (conditional_operators -> GREATER .)
+    DOUBLE          reduce using rule 61 (conditional_operators -> GREATER .)
+    INT             reduce using rule 61 (conditional_operators -> GREATER .)
+    MINUS           reduce using rule 61 (conditional_operators -> GREATER .)
+    STRING          reduce using rule 61 (conditional_operators -> GREATER .)
+    TRUE            reduce using rule 61 (conditional_operators -> GREATER .)
+    FALSE           reduce using rule 61 (conditional_operators -> GREATER .)
+    NOT             reduce using rule 61 (conditional_operators -> GREATER .)
+    NAME            reduce using rule 61 (conditional_operators -> GREATER .)
+    MULTIPLY        reduce using rule 61 (conditional_operators -> GREATER .)
+    DIVIDE          reduce using rule 61 (conditional_operators -> GREATER .)
+    PLUS            reduce using rule 61 (conditional_operators -> GREATER .)
+    MOD             reduce using rule 61 (conditional_operators -> GREATER .)
+    EXPONENT        reduce using rule 61 (conditional_operators -> GREATER .)
+    EQEQ            reduce using rule 61 (conditional_operators -> GREATER .)
+    LESS            reduce using rule 61 (conditional_operators -> GREATER .)
+    GREATER         reduce using rule 61 (conditional_operators -> GREATER .)
+    AND             reduce using rule 61 (conditional_operators -> GREATER .)
+    OR              reduce using rule 61 (conditional_operators -> GREATER .)
+    GREATEREQ       reduce using rule 61 (conditional_operators -> GREATER .)
+    LESSEQ          reduce using rule 61 (conditional_operators -> GREATER .)
+    NOTEQ           reduce using rule 61 (conditional_operators -> GREATER .)
+    SEMICOLON       reduce using rule 61 (conditional_operators -> GREATER .)
+    RPAR            reduce using rule 61 (conditional_operators -> GREATER .)
+    COMMA           reduce using rule 61 (conditional_operators -> GREATER .)
+
+
+state 45
+
+    (62) conditional_operators -> AND .
+
+    LPAR            reduce using rule 62 (conditional_operators -> AND .)
+    DOUBLE          reduce using rule 62 (conditional_operators -> AND .)
+    INT             reduce using rule 62 (conditional_operators -> AND .)
+    MINUS           reduce using rule 62 (conditional_operators -> AND .)
+    STRING          reduce using rule 62 (conditional_operators -> AND .)
+    TRUE            reduce using rule 62 (conditional_operators -> AND .)
+    FALSE           reduce using rule 62 (conditional_operators -> AND .)
+    NOT             reduce using rule 62 (conditional_operators -> AND .)
+    NAME            reduce using rule 62 (conditional_operators -> AND .)
+    MULTIPLY        reduce using rule 62 (conditional_operators -> AND .)
+    DIVIDE          reduce using rule 62 (conditional_operators -> AND .)
+    PLUS            reduce using rule 62 (conditional_operators -> AND .)
+    MOD             reduce using rule 62 (conditional_operators -> AND .)
+    EXPONENT        reduce using rule 62 (conditional_operators -> AND .)
+    EQEQ            reduce using rule 62 (conditional_operators -> AND .)
+    LESS            reduce using rule 62 (conditional_operators -> AND .)
+    GREATER         reduce using rule 62 (conditional_operators -> AND .)
+    AND             reduce using rule 62 (conditional_operators -> AND .)
+    OR              reduce using rule 62 (conditional_operators -> AND .)
+    GREATEREQ       reduce using rule 62 (conditional_operators -> AND .)
+    LESSEQ          reduce using rule 62 (conditional_operators -> AND .)
+    NOTEQ           reduce using rule 62 (conditional_operators -> AND .)
+    SEMICOLON       reduce using rule 62 (conditional_operators -> AND .)
+    RPAR            reduce using rule 62 (conditional_operators -> AND .)
+    COMMA           reduce using rule 62 (conditional_operators -> AND .)
+
+
+state 46
+
+    (63) conditional_operators -> OR .
+
+    LPAR            reduce using rule 63 (conditional_operators -> OR .)
+    DOUBLE          reduce using rule 63 (conditional_operators -> OR .)
+    INT             reduce using rule 63 (conditional_operators -> OR .)
+    MINUS           reduce using rule 63 (conditional_operators -> OR .)
+    STRING          reduce using rule 63 (conditional_operators -> OR .)
+    TRUE            reduce using rule 63 (conditional_operators -> OR .)
+    FALSE           reduce using rule 63 (conditional_operators -> OR .)
+    NOT             reduce using rule 63 (conditional_operators -> OR .)
+    NAME            reduce using rule 63 (conditional_operators -> OR .)
+    MULTIPLY        reduce using rule 63 (conditional_operators -> OR .)
+    DIVIDE          reduce using rule 63 (conditional_operators -> OR .)
+    PLUS            reduce using rule 63 (conditional_operators -> OR .)
+    MOD             reduce using rule 63 (conditional_operators -> OR .)
+    EXPONENT        reduce using rule 63 (conditional_operators -> OR .)
+    EQEQ            reduce using rule 63 (conditional_operators -> OR .)
+    LESS            reduce using rule 63 (conditional_operators -> OR .)
+    GREATER         reduce using rule 63 (conditional_operators -> OR .)
+    AND             reduce using rule 63 (conditional_operators -> OR .)
+    OR              reduce using rule 63 (conditional_operators -> OR .)
+    GREATEREQ       reduce using rule 63 (conditional_operators -> OR .)
+    LESSEQ          reduce using rule 63 (conditional_operators -> OR .)
+    NOTEQ           reduce using rule 63 (conditional_operators -> OR .)
+    SEMICOLON       reduce using rule 63 (conditional_operators -> OR .)
+    RPAR            reduce using rule 63 (conditional_operators -> OR .)
+    COMMA           reduce using rule 63 (conditional_operators -> OR .)
+
+
+state 47
+
+    (64) conditional_operators -> GREATEREQ .
+
+    LPAR            reduce using rule 64 (conditional_operators -> GREATEREQ .)
+    DOUBLE          reduce using rule 64 (conditional_operators -> GREATEREQ .)
+    INT             reduce using rule 64 (conditional_operators -> GREATEREQ .)
+    MINUS           reduce using rule 64 (conditional_operators -> GREATEREQ .)
+    STRING          reduce using rule 64 (conditional_operators -> GREATEREQ .)
+    TRUE            reduce using rule 64 (conditional_operators -> GREATEREQ .)
+    FALSE           reduce using rule 64 (conditional_operators -> GREATEREQ .)
+    NOT             reduce using rule 64 (conditional_operators -> GREATEREQ .)
+    NAME            reduce using rule 64 (conditional_operators -> GREATEREQ .)
+    MULTIPLY        reduce using rule 64 (conditional_operators -> GREATEREQ .)
+    DIVIDE          reduce using rule 64 (conditional_operators -> GREATEREQ .)
+    PLUS            reduce using rule 64 (conditional_operators -> GREATEREQ .)
+    MOD             reduce using rule 64 (conditional_operators -> GREATEREQ .)
+    EXPONENT        reduce using rule 64 (conditional_operators -> GREATEREQ .)
+    EQEQ            reduce using rule 64 (conditional_operators -> GREATEREQ .)
+    LESS            reduce using rule 64 (conditional_operators -> GREATEREQ .)
+    GREATER         reduce using rule 64 (conditional_operators -> GREATEREQ .)
+    AND             reduce using rule 64 (conditional_operators -> GREATEREQ .)
+    OR              reduce using rule 64 (conditional_operators -> GREATEREQ .)
+    GREATEREQ       reduce using rule 64 (conditional_operators -> GREATEREQ .)
+    LESSEQ          reduce using rule 64 (conditional_operators -> GREATEREQ .)
+    NOTEQ           reduce using rule 64 (conditional_operators -> GREATEREQ .)
+    SEMICOLON       reduce using rule 64 (conditional_operators -> GREATEREQ .)
+    RPAR            reduce using rule 64 (conditional_operators -> GREATEREQ .)
+    COMMA           reduce using rule 64 (conditional_operators -> GREATEREQ .)
+
+
+state 48
+
+    (65) conditional_operators -> LESSEQ .
+
+    LPAR            reduce using rule 65 (conditional_operators -> LESSEQ .)
+    DOUBLE          reduce using rule 65 (conditional_operators -> LESSEQ .)
+    INT             reduce using rule 65 (conditional_operators -> LESSEQ .)
+    MINUS           reduce using rule 65 (conditional_operators -> LESSEQ .)
+    STRING          reduce using rule 65 (conditional_operators -> LESSEQ .)
+    TRUE            reduce using rule 65 (conditional_operators -> LESSEQ .)
+    FALSE           reduce using rule 65 (conditional_operators -> LESSEQ .)
+    NOT             reduce using rule 65 (conditional_operators -> LESSEQ .)
+    NAME            reduce using rule 65 (conditional_operators -> LESSEQ .)
+    MULTIPLY        reduce using rule 65 (conditional_operators -> LESSEQ .)
+    DIVIDE          reduce using rule 65 (conditional_operators -> LESSEQ .)
+    PLUS            reduce using rule 65 (conditional_operators -> LESSEQ .)
+    MOD             reduce using rule 65 (conditional_operators -> LESSEQ .)
+    EXPONENT        reduce using rule 65 (conditional_operators -> LESSEQ .)
+    EQEQ            reduce using rule 65 (conditional_operators -> LESSEQ .)
+    LESS            reduce using rule 65 (conditional_operators -> LESSEQ .)
+    GREATER         reduce using rule 65 (conditional_operators -> LESSEQ .)
+    AND             reduce using rule 65 (conditional_operators -> LESSEQ .)
+    OR              reduce using rule 65 (conditional_operators -> LESSEQ .)
+    GREATEREQ       reduce using rule 65 (conditional_operators -> LESSEQ .)
+    LESSEQ          reduce using rule 65 (conditional_operators -> LESSEQ .)
+    NOTEQ           reduce using rule 65 (conditional_operators -> LESSEQ .)
+    SEMICOLON       reduce using rule 65 (conditional_operators -> LESSEQ .)
+    RPAR            reduce using rule 65 (conditional_operators -> LESSEQ .)
+    COMMA           reduce using rule 65 (conditional_operators -> LESSEQ .)
+
+
+state 49
+
+    (66) conditional_operators -> NOTEQ .
+
+    LPAR            reduce using rule 66 (conditional_operators -> NOTEQ .)
+    DOUBLE          reduce using rule 66 (conditional_operators -> NOTEQ .)
+    INT             reduce using rule 66 (conditional_operators -> NOTEQ .)
+    MINUS           reduce using rule 66 (conditional_operators -> NOTEQ .)
+    STRING          reduce using rule 66 (conditional_operators -> NOTEQ .)
+    TRUE            reduce using rule 66 (conditional_operators -> NOTEQ .)
+    FALSE           reduce using rule 66 (conditional_operators -> NOTEQ .)
+    NOT             reduce using rule 66 (conditional_operators -> NOTEQ .)
+    NAME            reduce using rule 66 (conditional_operators -> NOTEQ .)
+    MULTIPLY        reduce using rule 66 (conditional_operators -> NOTEQ .)
+    DIVIDE          reduce using rule 66 (conditional_operators -> NOTEQ .)
+    PLUS            reduce using rule 66 (conditional_operators -> NOTEQ .)
+    MOD             reduce using rule 66 (conditional_operators -> NOTEQ .)
+    EXPONENT        reduce using rule 66 (conditional_operators -> NOTEQ .)
+    EQEQ            reduce using rule 66 (conditional_operators -> NOTEQ .)
+    LESS            reduce using rule 66 (conditional_operators -> NOTEQ .)
+    GREATER         reduce using rule 66 (conditional_operators -> NOTEQ .)
+    AND             reduce using rule 66 (conditional_operators -> NOTEQ .)
+    OR              reduce using rule 66 (conditional_operators -> NOTEQ .)
+    GREATEREQ       reduce using rule 66 (conditional_operators -> NOTEQ .)
+    LESSEQ          reduce using rule 66 (conditional_operators -> NOTEQ .)
+    NOTEQ           reduce using rule 66 (conditional_operators -> NOTEQ .)
+    SEMICOLON       reduce using rule 66 (conditional_operators -> NOTEQ .)
+    RPAR            reduce using rule 66 (conditional_operators -> NOTEQ .)
+    COMMA           reduce using rule 66 (conditional_operators -> NOTEQ .)
+
+
+state 50
+
+    (52) unary_op -> var_access INCREMENT .
+
+    SEMICOLON       reduce using rule 52 (unary_op -> var_access INCREMENT .)
+    MULTIPLY        reduce using rule 52 (unary_op -> var_access INCREMENT .)
+    DIVIDE          reduce using rule 52 (unary_op -> var_access INCREMENT .)
+    PLUS            reduce using rule 52 (unary_op -> var_access INCREMENT .)
+    MINUS           reduce using rule 52 (unary_op -> var_access INCREMENT .)
+    MOD             reduce using rule 52 (unary_op -> var_access INCREMENT .)
+    EXPONENT        reduce using rule 52 (unary_op -> var_access INCREMENT .)
+    EQEQ            reduce using rule 52 (unary_op -> var_access INCREMENT .)
+    LESS            reduce using rule 52 (unary_op -> var_access INCREMENT .)
+    GREATER         reduce using rule 52 (unary_op -> var_access INCREMENT .)
+    AND             reduce using rule 52 (unary_op -> var_access INCREMENT .)
+    OR              reduce using rule 52 (unary_op -> var_access INCREMENT .)
+    GREATEREQ       reduce using rule 52 (unary_op -> var_access INCREMENT .)
+    LESSEQ          reduce using rule 52 (unary_op -> var_access INCREMENT .)
+    NOTEQ           reduce using rule 52 (unary_op -> var_access INCREMENT .)
+    RPAR            reduce using rule 52 (unary_op -> var_access INCREMENT .)
+    COMMA           reduce using rule 52 (unary_op -> var_access INCREMENT .)
+
+
+state 51
+
+    (53) unary_op -> var_access DECREMENT .
+
+    SEMICOLON       reduce using rule 53 (unary_op -> var_access DECREMENT .)
+    MULTIPLY        reduce using rule 53 (unary_op -> var_access DECREMENT .)
+    DIVIDE          reduce using rule 53 (unary_op -> var_access DECREMENT .)
+    PLUS            reduce using rule 53 (unary_op -> var_access DECREMENT .)
+    MINUS           reduce using rule 53 (unary_op -> var_access DECREMENT .)
+    MOD             reduce using rule 53 (unary_op -> var_access DECREMENT .)
+    EXPONENT        reduce using rule 53 (unary_op -> var_access DECREMENT .)
+    EQEQ            reduce using rule 53 (unary_op -> var_access DECREMENT .)
+    LESS            reduce using rule 53 (unary_op -> var_access DECREMENT .)
+    GREATER         reduce using rule 53 (unary_op -> var_access DECREMENT .)
+    AND             reduce using rule 53 (unary_op -> var_access DECREMENT .)
+    OR              reduce using rule 53 (unary_op -> var_access DECREMENT .)
+    GREATEREQ       reduce using rule 53 (unary_op -> var_access DECREMENT .)
+    LESSEQ          reduce using rule 53 (unary_op -> var_access DECREMENT .)
+    NOTEQ           reduce using rule 53 (unary_op -> var_access DECREMENT .)
+    RPAR            reduce using rule 53 (unary_op -> var_access DECREMENT .)
+    COMMA           reduce using rule 53 (unary_op -> var_access DECREMENT .)
+
+
+state 52
+
+    (34) expr -> LPAR expr . RPAR
+    (36) expr -> expr . MULTIPLY expr
+    (37) expr -> expr . DIVIDE expr
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . MOD expr
+    (41) expr -> expr . EXPONENT expr
+    (57) expr -> expr . conditional_operators expr
+    (59) conditional_operators -> . EQEQ
+    (60) conditional_operators -> . LESS
+    (61) conditional_operators -> . GREATER
+    (62) conditional_operators -> . AND
+    (63) conditional_operators -> . OR
+    (64) conditional_operators -> . GREATEREQ
+    (65) conditional_operators -> . LESSEQ
+    (66) conditional_operators -> . NOTEQ
+
+    RPAR            shift and go to state 78
+    MULTIPLY        shift and go to state 35
+    DIVIDE          shift and go to state 36
+    PLUS            shift and go to state 37
+    MINUS           shift and go to state 38
+    MOD             shift and go to state 39
+    EXPONENT        shift and go to state 40
+    EQEQ            shift and go to state 42
+    LESS            shift and go to state 43
+    GREATER         shift and go to state 44
+    AND             shift and go to state 45
+    OR              shift and go to state 46
+    GREATEREQ       shift and go to state 47
+    LESSEQ          shift and go to state 48
+    NOTEQ           shift and go to state 49
+
+    conditional_operators          shift and go to state 41
+
+state 53
+
+    (35) expr -> unary_op .
+
+    RPAR            reduce using rule 35 (expr -> unary_op .)
+    MULTIPLY        reduce using rule 35 (expr -> unary_op .)
+    DIVIDE          reduce using rule 35 (expr -> unary_op .)
+    PLUS            reduce using rule 35 (expr -> unary_op .)
+    MINUS           reduce using rule 35 (expr -> unary_op .)
+    MOD             reduce using rule 35 (expr -> unary_op .)
+    EXPONENT        reduce using rule 35 (expr -> unary_op .)
+    EQEQ            reduce using rule 35 (expr -> unary_op .)
+    LESS            reduce using rule 35 (expr -> unary_op .)
+    GREATER         reduce using rule 35 (expr -> unary_op .)
+    AND             reduce using rule 35 (expr -> unary_op .)
+    OR              reduce using rule 35 (expr -> unary_op .)
+    GREATEREQ       reduce using rule 35 (expr -> unary_op .)
+    LESSEQ          reduce using rule 35 (expr -> unary_op .)
+    NOTEQ           reduce using rule 35 (expr -> unary_op .)
+    SEMICOLON       reduce using rule 35 (expr -> unary_op .)
+    COMMA           reduce using rule 35 (expr -> unary_op .)
+
+
+state 54
+
+    (49) expr -> var_access .
+    (52) unary_op -> var_access . INCREMENT
+    (53) unary_op -> var_access . DECREMENT
+
+    RPAR            reduce using rule 49 (expr -> var_access .)
+    MULTIPLY        reduce using rule 49 (expr -> var_access .)
+    DIVIDE          reduce using rule 49 (expr -> var_access .)
+    PLUS            reduce using rule 49 (expr -> var_access .)
+    MINUS           reduce using rule 49 (expr -> var_access .)
+    MOD             reduce using rule 49 (expr -> var_access .)
+    EXPONENT        reduce using rule 49 (expr -> var_access .)
+    EQEQ            reduce using rule 49 (expr -> var_access .)
+    LESS            reduce using rule 49 (expr -> var_access .)
+    GREATER         reduce using rule 49 (expr -> var_access .)
+    AND             reduce using rule 49 (expr -> var_access .)
+    OR              reduce using rule 49 (expr -> var_access .)
+    GREATEREQ       reduce using rule 49 (expr -> var_access .)
+    LESSEQ          reduce using rule 49 (expr -> var_access .)
+    NOTEQ           reduce using rule 49 (expr -> var_access .)
+    SEMICOLON       reduce using rule 49 (expr -> var_access .)
+    COMMA           reduce using rule 49 (expr -> var_access .)
+    INCREMENT       shift and go to state 50
+    DECREMENT       shift and go to state 51
+
+
+state 55
+
+    (51) expr -> empty .
+
+    RPAR            reduce using rule 51 (expr -> empty .)
+    MULTIPLY        reduce using rule 51 (expr -> empty .)
+    DIVIDE          reduce using rule 51 (expr -> empty .)
+    PLUS            reduce using rule 51 (expr -> empty .)
+    MINUS           reduce using rule 51 (expr -> empty .)
+    MOD             reduce using rule 51 (expr -> empty .)
+    EXPONENT        reduce using rule 51 (expr -> empty .)
+    EQEQ            reduce using rule 51 (expr -> empty .)
+    LESS            reduce using rule 51 (expr -> empty .)
+    GREATER         reduce using rule 51 (expr -> empty .)
+    AND             reduce using rule 51 (expr -> empty .)
+    OR              reduce using rule 51 (expr -> empty .)
+    GREATEREQ       reduce using rule 51 (expr -> empty .)
+    LESSEQ          reduce using rule 51 (expr -> empty .)
+    NOTEQ           reduce using rule 51 (expr -> empty .)
+    SEMICOLON       reduce using rule 51 (expr -> empty .)
+    COMMA           reduce using rule 51 (expr -> empty .)
+
+
+state 56
+
+    (21) var_access -> NAME .
+    (22) struct_access -> NAME . DOT NAME
+
+    INCREMENT       reduce using rule 21 (var_access -> NAME .)
+    DECREMENT       reduce using rule 21 (var_access -> NAME .)
+    RPAR            reduce using rule 21 (var_access -> NAME .)
+    MULTIPLY        reduce using rule 21 (var_access -> NAME .)
+    DIVIDE          reduce using rule 21 (var_access -> NAME .)
+    PLUS            reduce using rule 21 (var_access -> NAME .)
+    MINUS           reduce using rule 21 (var_access -> NAME .)
+    MOD             reduce using rule 21 (var_access -> NAME .)
+    EXPONENT        reduce using rule 21 (var_access -> NAME .)
+    EQEQ            reduce using rule 21 (var_access -> NAME .)
+    LESS            reduce using rule 21 (var_access -> NAME .)
+    GREATER         reduce using rule 21 (var_access -> NAME .)
+    AND             reduce using rule 21 (var_access -> NAME .)
+    OR              reduce using rule 21 (var_access -> NAME .)
+    GREATEREQ       reduce using rule 21 (var_access -> NAME .)
+    LESSEQ          reduce using rule 21 (var_access -> NAME .)
+    NOTEQ           reduce using rule 21 (var_access -> NAME .)
+    SEMICOLON       reduce using rule 21 (var_access -> NAME .)
+    COMMA           reduce using rule 21 (var_access -> NAME .)
+    DOT             shift and go to state 79
+
+
+state 57
+
+    (44) expr -> MINUS DOUBLE .
+
+    MULTIPLY        reduce using rule 44 (expr -> MINUS DOUBLE .)
+    DIVIDE          reduce using rule 44 (expr -> MINUS DOUBLE .)
+    PLUS            reduce using rule 44 (expr -> MINUS DOUBLE .)
+    MINUS           reduce using rule 44 (expr -> MINUS DOUBLE .)
+    MOD             reduce using rule 44 (expr -> MINUS DOUBLE .)
+    EXPONENT        reduce using rule 44 (expr -> MINUS DOUBLE .)
+    EQEQ            reduce using rule 44 (expr -> MINUS DOUBLE .)
+    LESS            reduce using rule 44 (expr -> MINUS DOUBLE .)
+    GREATER         reduce using rule 44 (expr -> MINUS DOUBLE .)
+    AND             reduce using rule 44 (expr -> MINUS DOUBLE .)
+    OR              reduce using rule 44 (expr -> MINUS DOUBLE .)
+    GREATEREQ       reduce using rule 44 (expr -> MINUS DOUBLE .)
+    LESSEQ          reduce using rule 44 (expr -> MINUS DOUBLE .)
+    NOTEQ           reduce using rule 44 (expr -> MINUS DOUBLE .)
+    SEMICOLON       reduce using rule 44 (expr -> MINUS DOUBLE .)
+    RPAR            reduce using rule 44 (expr -> MINUS DOUBLE .)
+    COMMA           reduce using rule 44 (expr -> MINUS DOUBLE .)
+
+
+state 58
+
+    (45) expr -> MINUS INT .
+
+    MULTIPLY        reduce using rule 45 (expr -> MINUS INT .)
+    DIVIDE          reduce using rule 45 (expr -> MINUS INT .)
+    PLUS            reduce using rule 45 (expr -> MINUS INT .)
+    MINUS           reduce using rule 45 (expr -> MINUS INT .)
+    MOD             reduce using rule 45 (expr -> MINUS INT .)
+    EXPONENT        reduce using rule 45 (expr -> MINUS INT .)
+    EQEQ            reduce using rule 45 (expr -> MINUS INT .)
+    LESS            reduce using rule 45 (expr -> MINUS INT .)
+    GREATER         reduce using rule 45 (expr -> MINUS INT .)
+    AND             reduce using rule 45 (expr -> MINUS INT .)
+    OR              reduce using rule 45 (expr -> MINUS INT .)
+    GREATEREQ       reduce using rule 45 (expr -> MINUS INT .)
+    LESSEQ          reduce using rule 45 (expr -> MINUS INT .)
+    NOTEQ           reduce using rule 45 (expr -> MINUS INT .)
+    SEMICOLON       reduce using rule 45 (expr -> MINUS INT .)
+    RPAR            reduce using rule 45 (expr -> MINUS INT .)
+    COMMA           reduce using rule 45 (expr -> MINUS INT .)
+
+
+state 59
+
+    (56) unary_op -> MINUS var_access .
+
+    SEMICOLON       reduce using rule 56 (unary_op -> MINUS var_access .)
+    MULTIPLY        reduce using rule 56 (unary_op -> MINUS var_access .)
+    DIVIDE          reduce using rule 56 (unary_op -> MINUS var_access .)
+    PLUS            reduce using rule 56 (unary_op -> MINUS var_access .)
+    MINUS           reduce using rule 56 (unary_op -> MINUS var_access .)
+    MOD             reduce using rule 56 (unary_op -> MINUS var_access .)
+    EXPONENT        reduce using rule 56 (unary_op -> MINUS var_access .)
+    EQEQ            reduce using rule 56 (unary_op -> MINUS var_access .)
+    LESS            reduce using rule 56 (unary_op -> MINUS var_access .)
+    GREATER         reduce using rule 56 (unary_op -> MINUS var_access .)
+    AND             reduce using rule 56 (unary_op -> MINUS var_access .)
+    OR              reduce using rule 56 (unary_op -> MINUS var_access .)
+    GREATEREQ       reduce using rule 56 (unary_op -> MINUS var_access .)
+    LESSEQ          reduce using rule 56 (unary_op -> MINUS var_access .)
+    NOTEQ           reduce using rule 56 (unary_op -> MINUS var_access .)
+    RPAR            reduce using rule 56 (unary_op -> MINUS var_access .)
+    COMMA           reduce using rule 56 (unary_op -> MINUS var_access .)
+
+
+state 60
+
+    (21) var_access -> NAME .
+
+    SEMICOLON       reduce using rule 21 (var_access -> NAME .)
+    MULTIPLY        reduce using rule 21 (var_access -> NAME .)
+    DIVIDE          reduce using rule 21 (var_access -> NAME .)
+    PLUS            reduce using rule 21 (var_access -> NAME .)
+    MINUS           reduce using rule 21 (var_access -> NAME .)
+    MOD             reduce using rule 21 (var_access -> NAME .)
+    EXPONENT        reduce using rule 21 (var_access -> NAME .)
+    EQEQ            reduce using rule 21 (var_access -> NAME .)
+    LESS            reduce using rule 21 (var_access -> NAME .)
+    GREATER         reduce using rule 21 (var_access -> NAME .)
+    AND             reduce using rule 21 (var_access -> NAME .)
+    OR              reduce using rule 21 (var_access -> NAME .)
+    GREATEREQ       reduce using rule 21 (var_access -> NAME .)
+    LESSEQ          reduce using rule 21 (var_access -> NAME .)
+    NOTEQ           reduce using rule 21 (var_access -> NAME .)
+    RPAR            reduce using rule 21 (var_access -> NAME .)
+    COMMA           reduce using rule 21 (var_access -> NAME .)
+
+
+state 61
+
+    (54) unary_op -> struct_access INCREMENT .
+
+    SEMICOLON       reduce using rule 54 (unary_op -> struct_access INCREMENT .)
+    MULTIPLY        reduce using rule 54 (unary_op -> struct_access INCREMENT .)
+    DIVIDE          reduce using rule 54 (unary_op -> struct_access INCREMENT .)
+    PLUS            reduce using rule 54 (unary_op -> struct_access INCREMENT .)
+    MINUS           reduce using rule 54 (unary_op -> struct_access INCREMENT .)
+    MOD             reduce using rule 54 (unary_op -> struct_access INCREMENT .)
+    EXPONENT        reduce using rule 54 (unary_op -> struct_access INCREMENT .)
+    EQEQ            reduce using rule 54 (unary_op -> struct_access INCREMENT .)
+    LESS            reduce using rule 54 (unary_op -> struct_access INCREMENT .)
+    GREATER         reduce using rule 54 (unary_op -> struct_access INCREMENT .)
+    AND             reduce using rule 54 (unary_op -> struct_access INCREMENT .)
+    OR              reduce using rule 54 (unary_op -> struct_access INCREMENT .)
+    GREATEREQ       reduce using rule 54 (unary_op -> struct_access INCREMENT .)
+    LESSEQ          reduce using rule 54 (unary_op -> struct_access INCREMENT .)
+    NOTEQ           reduce using rule 54 (unary_op -> struct_access INCREMENT .)
+    RPAR            reduce using rule 54 (unary_op -> struct_access INCREMENT .)
+    COMMA           reduce using rule 54 (unary_op -> struct_access INCREMENT .)
+
+
+state 62
+
+    (55) unary_op -> struct_access DECREMENT .
+
+    SEMICOLON       reduce using rule 55 (unary_op -> struct_access DECREMENT .)
+    MULTIPLY        reduce using rule 55 (unary_op -> struct_access DECREMENT .)
+    DIVIDE          reduce using rule 55 (unary_op -> struct_access DECREMENT .)
+    PLUS            reduce using rule 55 (unary_op -> struct_access DECREMENT .)
+    MINUS           reduce using rule 55 (unary_op -> struct_access DECREMENT .)
+    MOD             reduce using rule 55 (unary_op -> struct_access DECREMENT .)
+    EXPONENT        reduce using rule 55 (unary_op -> struct_access DECREMENT .)
+    EQEQ            reduce using rule 55 (unary_op -> struct_access DECREMENT .)
+    LESS            reduce using rule 55 (unary_op -> struct_access DECREMENT .)
+    GREATER         reduce using rule 55 (unary_op -> struct_access DECREMENT .)
+    AND             reduce using rule 55 (unary_op -> struct_access DECREMENT .)
+    OR              reduce using rule 55 (unary_op -> struct_access DECREMENT .)
+    GREATEREQ       reduce using rule 55 (unary_op -> struct_access DECREMENT .)
+    LESSEQ          reduce using rule 55 (unary_op -> struct_access DECREMENT .)
+    NOTEQ           reduce using rule 55 (unary_op -> struct_access DECREMENT .)
+    RPAR            reduce using rule 55 (unary_op -> struct_access DECREMENT .)
+    COMMA           reduce using rule 55 (unary_op -> struct_access DECREMENT .)
+
+
+state 63
+
+    (58) expr -> NOT expr .
+    (36) expr -> expr . MULTIPLY expr
+    (37) expr -> expr . DIVIDE expr
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . MOD expr
+    (41) expr -> expr . EXPONENT expr
+    (57) expr -> expr . conditional_operators expr
+    (59) conditional_operators -> . EQEQ
+    (60) conditional_operators -> . LESS
+    (61) conditional_operators -> . GREATER
+    (62) conditional_operators -> . AND
+    (63) conditional_operators -> . OR
+    (64) conditional_operators -> . GREATEREQ
+    (65) conditional_operators -> . LESSEQ
+    (66) conditional_operators -> . NOTEQ
+
+    MULTIPLY        reduce using rule 58 (expr -> NOT expr .)
+    DIVIDE          reduce using rule 58 (expr -> NOT expr .)
+    PLUS            reduce using rule 58 (expr -> NOT expr .)
+    MINUS           reduce using rule 58 (expr -> NOT expr .)
+    MOD             reduce using rule 58 (expr -> NOT expr .)
+    EXPONENT        reduce using rule 58 (expr -> NOT expr .)
+    EQEQ            reduce using rule 58 (expr -> NOT expr .)
+    LESS            reduce using rule 58 (expr -> NOT expr .)
+    GREATER         reduce using rule 58 (expr -> NOT expr .)
+    AND             reduce using rule 58 (expr -> NOT expr .)
+    OR              reduce using rule 58 (expr -> NOT expr .)
+    GREATEREQ       reduce using rule 58 (expr -> NOT expr .)
+    LESSEQ          reduce using rule 58 (expr -> NOT expr .)
+    NOTEQ           reduce using rule 58 (expr -> NOT expr .)
+    SEMICOLON       reduce using rule 58 (expr -> NOT expr .)
+    RPAR            reduce using rule 58 (expr -> NOT expr .)
+    COMMA           reduce using rule 58 (expr -> NOT expr .)
+
+  ! MULTIPLY        [ shift and go to state 35 ]
+  ! DIVIDE          [ shift and go to state 36 ]
+  ! PLUS            [ shift and go to state 37 ]
+  ! MINUS           [ shift and go to state 38 ]
+  ! MOD             [ shift and go to state 39 ]
+  ! EXPONENT        [ shift and go to state 40 ]
+  ! EQEQ            [ shift and go to state 42 ]
+  ! LESS            [ shift and go to state 43 ]
+  ! GREATER         [ shift and go to state 44 ]
+  ! AND             [ shift and go to state 45 ]
+  ! OR              [ shift and go to state 46 ]
+  ! GREATEREQ       [ shift and go to state 47 ]
+  ! LESSEQ          [ shift and go to state 48 ]
+  ! NOTEQ           [ shift and go to state 49 ]
+
+    conditional_operators          shift and go to state 41
+
+state 64
+
+    (24) var_dec -> identifier NAME .
+    (25) var_initialize -> identifier NAME . EQUALS expr
+    (26) var_initialize -> identifier NAME . EQUALS NAME
+
+    SEMICOLON       reduce using rule 24 (var_dec -> identifier NAME .)
+    EQUALS          shift and go to state 80
+
+
+state 65
+
+    (23) var_assign -> NAME EQUALS . expr
+    (34) expr -> . LPAR expr RPAR
+    (35) expr -> . unary_op
+    (36) expr -> . expr MULTIPLY expr
+    (37) expr -> . expr DIVIDE expr
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr MOD expr
+    (41) expr -> . expr EXPONENT expr
+    (42) expr -> . DOUBLE
+    (43) expr -> . INT
+    (44) expr -> . MINUS DOUBLE
+    (45) expr -> . MINUS INT
+    (46) expr -> . STRING
+    (47) expr -> . TRUE
+    (48) expr -> . FALSE
+    (49) expr -> . var_access
+    (50) expr -> . struct_access
+    (51) expr -> . empty
+    (57) expr -> . expr conditional_operators expr
+    (58) expr -> . NOT expr
+    (52) unary_op -> . var_access INCREMENT
+    (53) unary_op -> . var_access DECREMENT
+    (54) unary_op -> . struct_access INCREMENT
+    (55) unary_op -> . struct_access DECREMENT
+    (56) unary_op -> . MINUS var_access
+    (21) var_access -> . NAME
+    (22) struct_access -> . NAME DOT NAME
+    (73) empty -> .
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    LPAR            shift and go to state 15
+    DOUBLE          shift and go to state 17
+    INT             shift and go to state 18
+    MINUS           shift and go to state 16
+    STRING          shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    NOT             shift and go to state 23
+    NAME            shift and go to state 56
+    MULTIPLY        reduce using rule 73 (empty -> .)
+    DIVIDE          reduce using rule 73 (empty -> .)
+    PLUS            reduce using rule 73 (empty -> .)
+    MOD             reduce using rule 73 (empty -> .)
+    EXPONENT        reduce using rule 73 (empty -> .)
+    EQEQ            reduce using rule 73 (empty -> .)
+    LESS            reduce using rule 73 (empty -> .)
+    GREATER         reduce using rule 73 (empty -> .)
+    AND             reduce using rule 73 (empty -> .)
+    OR              reduce using rule 73 (empty -> .)
+    GREATEREQ       reduce using rule 73 (empty -> .)
+    LESSEQ          reduce using rule 73 (empty -> .)
+    NOTEQ           reduce using rule 73 (empty -> .)
+    SEMICOLON       reduce using rule 73 (empty -> .)
+
+  ! MINUS           [ reduce using rule 73 (empty -> .) ]
+
+    expr                           shift and go to state 81
+    unary_op                       shift and go to state 53
+    var_access                     shift and go to state 54
+    struct_access                  shift and go to state 22
+    empty                          shift and go to state 55
+
+state 66
+
+    (33) struct_attribute_initialize -> NAME DOT . NAME EQUALS expr
+    (22) struct_access -> NAME DOT . NAME
+
+    NAME            shift and go to state 82
+
+
+state 67
+
+    (68) function_call -> PRINT LPAR . opt_args RPAR
+    (69) opt_args -> . expr moreargs
+    (71) opt_args -> . empty
+    (34) expr -> . LPAR expr RPAR
+    (35) expr -> . unary_op
+    (36) expr -> . expr MULTIPLY expr
+    (37) expr -> . expr DIVIDE expr
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr MOD expr
+    (41) expr -> . expr EXPONENT expr
+    (42) expr -> . DOUBLE
+    (43) expr -> . INT
+    (44) expr -> . MINUS DOUBLE
+    (45) expr -> . MINUS INT
+    (46) expr -> . STRING
+    (47) expr -> . TRUE
+    (48) expr -> . FALSE
+    (49) expr -> . var_access
+    (50) expr -> . struct_access
+    (51) expr -> . empty
+    (57) expr -> . expr conditional_operators expr
+    (58) expr -> . NOT expr
+    (73) empty -> .
+    (52) unary_op -> . var_access INCREMENT
+    (53) unary_op -> . var_access DECREMENT
+    (54) unary_op -> . struct_access INCREMENT
+    (55) unary_op -> . struct_access DECREMENT
+    (56) unary_op -> . MINUS var_access
+    (21) var_access -> . NAME
+    (22) struct_access -> . NAME DOT NAME
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    LPAR            shift and go to state 15
+    DOUBLE          shift and go to state 17
+    INT             shift and go to state 18
+    MINUS           shift and go to state 16
+    STRING          shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    NOT             shift and go to state 23
+    RPAR            reduce using rule 73 (empty -> .)
+    MULTIPLY        reduce using rule 73 (empty -> .)
+    DIVIDE          reduce using rule 73 (empty -> .)
+    PLUS            reduce using rule 73 (empty -> .)
+    MOD             reduce using rule 73 (empty -> .)
+    EXPONENT        reduce using rule 73 (empty -> .)
+    COMMA           reduce using rule 73 (empty -> .)
+    EQEQ            reduce using rule 73 (empty -> .)
+    LESS            reduce using rule 73 (empty -> .)
+    GREATER         reduce using rule 73 (empty -> .)
+    AND             reduce using rule 73 (empty -> .)
+    OR              reduce using rule 73 (empty -> .)
+    GREATEREQ       reduce using rule 73 (empty -> .)
+    LESSEQ          reduce using rule 73 (empty -> .)
+    NOTEQ           reduce using rule 73 (empty -> .)
+    NAME            shift and go to state 56
+
+  ! MINUS           [ reduce using rule 73 (empty -> .) ]
+
+    opt_args                       shift and go to state 83
+    expr                           shift and go to state 84
+    empty                          shift and go to state 85
+    unary_op                       shift and go to state 53
+    var_access                     shift and go to state 54
+    struct_access                  shift and go to state 22
+
+state 68
+
+    (67) loop -> DO LBRACE . stmts RBRACE WHILE LPAR expr RPAR
+    (1) stmts -> . stmt SEMICOLON stmts
+    (2) stmts -> . COMMENT
+    (3) stmts -> .
+    (4) stmt -> . expr
+    (5) stmt -> . empty
+    (6) stmt -> . var_dec
+    (7) stmt -> . var_initialize
+    (8) stmt -> . var_assign
+    (9) stmt -> . var_access
+    (10) stmt -> . function_call
+    (11) stmt -> . loop
+    (12) stmt -> . struct_definition
+    (13) stmt -> . struct_attribute_initialize
+    (14) stmt -> . unary_op
+    (34) expr -> . LPAR expr RPAR
+    (35) expr -> . unary_op
+    (36) expr -> . expr MULTIPLY expr
+    (37) expr -> . expr DIVIDE expr
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr MOD expr
+    (41) expr -> . expr EXPONENT expr
+    (42) expr -> . DOUBLE
+    (43) expr -> . INT
+    (44) expr -> . MINUS DOUBLE
+    (45) expr -> . MINUS INT
+    (46) expr -> . STRING
+    (47) expr -> . TRUE
+    (48) expr -> . FALSE
+    (49) expr -> . var_access
+    (50) expr -> . struct_access
+    (51) expr -> . empty
+    (57) expr -> . expr conditional_operators expr
+    (58) expr -> . NOT expr
+    (73) empty -> .
+    (24) var_dec -> . identifier NAME
+    (25) var_initialize -> . identifier NAME EQUALS expr
+    (26) var_initialize -> . identifier NAME EQUALS NAME
+    (23) var_assign -> . NAME EQUALS expr
+    (21) var_access -> . NAME
+    (68) function_call -> . PRINT LPAR opt_args RPAR
+    (67) loop -> . DO LBRACE stmts RBRACE WHILE LPAR expr RPAR
+    (15) struct_definition -> . STRUCT NAME EQUALS LBRACE attribute_dec RBRACE
+    (33) struct_attribute_initialize -> . NAME DOT NAME EQUALS expr
+    (52) unary_op -> . var_access INCREMENT
+    (53) unary_op -> . var_access DECREMENT
+    (54) unary_op -> . struct_access INCREMENT
+    (55) unary_op -> . struct_access DECREMENT
+    (56) unary_op -> . MINUS var_access
+    (22) struct_access -> . NAME DOT NAME
+    (27) identifier -> . INTDEC
+    (28) identifier -> . DOUBLEDEC
+    (29) identifier -> . STRINGDEC
+    (30) identifier -> . BOOLDEC
+    (31) identifier -> . CHARDEC
+    (32) identifier -> . NAME
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    COMMENT         shift and go to state 3
+    RBRACE          reduce using rule 3 (stmts -> .)
+    LPAR            shift and go to state 15
+    DOUBLE          shift and go to state 17
+    INT             shift and go to state 18
+    MINUS           shift and go to state 16
+    STRING          shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    NOT             shift and go to state 23
+    SEMICOLON       reduce using rule 73 (empty -> .)
+    MULTIPLY        reduce using rule 73 (empty -> .)
+    DIVIDE          reduce using rule 73 (empty -> .)
+    PLUS            reduce using rule 73 (empty -> .)
+    MOD             reduce using rule 73 (empty -> .)
+    EXPONENT        reduce using rule 73 (empty -> .)
+    EQEQ            reduce using rule 73 (empty -> .)
+    LESS            reduce using rule 73 (empty -> .)
+    GREATER         reduce using rule 73 (empty -> .)
+    AND             reduce using rule 73 (empty -> .)
+    OR              reduce using rule 73 (empty -> .)
+    GREATEREQ       reduce using rule 73 (empty -> .)
+    LESSEQ          reduce using rule 73 (empty -> .)
+    NOTEQ           reduce using rule 73 (empty -> .)
+    NAME            shift and go to state 25
+    PRINT           shift and go to state 26
+    DO              shift and go to state 27
+    STRUCT          shift and go to state 28
+    INTDEC          shift and go to state 29
+    DOUBLEDEC       shift and go to state 30
+    STRINGDEC       shift and go to state 31
+    BOOLDEC         shift and go to state 32
+    CHARDEC         shift and go to state 33
+
+  ! MINUS           [ reduce using rule 73 (empty -> .) ]
+
+    stmts                          shift and go to state 86
+    expr                           shift and go to state 4
+    stmt                           shift and go to state 2
+    empty                          shift and go to state 5
+    var_dec                        shift and go to state 6
+    var_initialize                 shift and go to state 7
+    var_assign                     shift and go to state 8
+    var_access                     shift and go to state 9
+    function_call                  shift and go to state 10
+    loop                           shift and go to state 11
+    struct_definition              shift and go to state 12
+    struct_attribute_initialize    shift and go to state 13
+    unary_op                       shift and go to state 14
+    struct_access                  shift and go to state 22
+    identifier                     shift and go to state 24
+
+state 69
+
+    (15) struct_definition -> STRUCT NAME . EQUALS LBRACE attribute_dec RBRACE
+
+    EQUALS          shift and go to state 87
+
+
+state 70
+
+    (1) stmts -> stmt SEMICOLON stmts .
+
+    $end            reduce using rule 1 (stmts -> stmt SEMICOLON stmts .)
+    RBRACE          reduce using rule 1 (stmts -> stmt SEMICOLON stmts .)
+
+
+state 71
+
+    (36) expr -> expr MULTIPLY expr .
+    (36) expr -> expr . MULTIPLY expr
+    (37) expr -> expr . DIVIDE expr
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . MOD expr
+    (41) expr -> expr . EXPONENT expr
+    (57) expr -> expr . conditional_operators expr
+    (59) conditional_operators -> . EQEQ
+    (60) conditional_operators -> . LESS
+    (61) conditional_operators -> . GREATER
+    (62) conditional_operators -> . AND
+    (63) conditional_operators -> . OR
+    (64) conditional_operators -> . GREATEREQ
+    (65) conditional_operators -> . LESSEQ
+    (66) conditional_operators -> . NOTEQ
+
+    MULTIPLY        reduce using rule 36 (expr -> expr MULTIPLY expr .)
+    DIVIDE          reduce using rule 36 (expr -> expr MULTIPLY expr .)
+    PLUS            reduce using rule 36 (expr -> expr MULTIPLY expr .)
+    MINUS           reduce using rule 36 (expr -> expr MULTIPLY expr .)
+    MOD             reduce using rule 36 (expr -> expr MULTIPLY expr .)
+    EXPONENT        reduce using rule 36 (expr -> expr MULTIPLY expr .)
+    EQEQ            reduce using rule 36 (expr -> expr MULTIPLY expr .)
+    LESS            reduce using rule 36 (expr -> expr MULTIPLY expr .)
+    GREATER         reduce using rule 36 (expr -> expr MULTIPLY expr .)
+    AND             reduce using rule 36 (expr -> expr MULTIPLY expr .)
+    OR              reduce using rule 36 (expr -> expr MULTIPLY expr .)
+    GREATEREQ       reduce using rule 36 (expr -> expr MULTIPLY expr .)
+    LESSEQ          reduce using rule 36 (expr -> expr MULTIPLY expr .)
+    NOTEQ           reduce using rule 36 (expr -> expr MULTIPLY expr .)
+    SEMICOLON       reduce using rule 36 (expr -> expr MULTIPLY expr .)
+    RPAR            reduce using rule 36 (expr -> expr MULTIPLY expr .)
+    COMMA           reduce using rule 36 (expr -> expr MULTIPLY expr .)
+
+  ! MULTIPLY        [ shift and go to state 35 ]
+  ! DIVIDE          [ shift and go to state 36 ]
+  ! PLUS            [ shift and go to state 37 ]
+  ! MINUS           [ shift and go to state 38 ]
+  ! MOD             [ shift and go to state 39 ]
+  ! EXPONENT        [ shift and go to state 40 ]
+  ! EQEQ            [ shift and go to state 42 ]
+  ! LESS            [ shift and go to state 43 ]
+  ! GREATER         [ shift and go to state 44 ]
+  ! AND             [ shift and go to state 45 ]
+  ! OR              [ shift and go to state 46 ]
+  ! GREATEREQ       [ shift and go to state 47 ]
+  ! LESSEQ          [ shift and go to state 48 ]
+  ! NOTEQ           [ shift and go to state 49 ]
+
+    conditional_operators          shift and go to state 41
+
+state 72
+
+    (37) expr -> expr DIVIDE expr .
+    (36) expr -> expr . MULTIPLY expr
+    (37) expr -> expr . DIVIDE expr
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . MOD expr
+    (41) expr -> expr . EXPONENT expr
+    (57) expr -> expr . conditional_operators expr
+    (59) conditional_operators -> . EQEQ
+    (60) conditional_operators -> . LESS
+    (61) conditional_operators -> . GREATER
+    (62) conditional_operators -> . AND
+    (63) conditional_operators -> . OR
+    (64) conditional_operators -> . GREATEREQ
+    (65) conditional_operators -> . LESSEQ
+    (66) conditional_operators -> . NOTEQ
+
+    MULTIPLY        reduce using rule 37 (expr -> expr DIVIDE expr .)
+    DIVIDE          reduce using rule 37 (expr -> expr DIVIDE expr .)
+    PLUS            reduce using rule 37 (expr -> expr DIVIDE expr .)
+    MINUS           reduce using rule 37 (expr -> expr DIVIDE expr .)
+    MOD             reduce using rule 37 (expr -> expr DIVIDE expr .)
+    EXPONENT        reduce using rule 37 (expr -> expr DIVIDE expr .)
+    EQEQ            reduce using rule 37 (expr -> expr DIVIDE expr .)
+    LESS            reduce using rule 37 (expr -> expr DIVIDE expr .)
+    GREATER         reduce using rule 37 (expr -> expr DIVIDE expr .)
+    AND             reduce using rule 37 (expr -> expr DIVIDE expr .)
+    OR              reduce using rule 37 (expr -> expr DIVIDE expr .)
+    GREATEREQ       reduce using rule 37 (expr -> expr DIVIDE expr .)
+    LESSEQ          reduce using rule 37 (expr -> expr DIVIDE expr .)
+    NOTEQ           reduce using rule 37 (expr -> expr DIVIDE expr .)
+    SEMICOLON       reduce using rule 37 (expr -> expr DIVIDE expr .)
+    RPAR            reduce using rule 37 (expr -> expr DIVIDE expr .)
+    COMMA           reduce using rule 37 (expr -> expr DIVIDE expr .)
+
+  ! MULTIPLY        [ shift and go to state 35 ]
+  ! DIVIDE          [ shift and go to state 36 ]
+  ! PLUS            [ shift and go to state 37 ]
+  ! MINUS           [ shift and go to state 38 ]
+  ! MOD             [ shift and go to state 39 ]
+  ! EXPONENT        [ shift and go to state 40 ]
+  ! EQEQ            [ shift and go to state 42 ]
+  ! LESS            [ shift and go to state 43 ]
+  ! GREATER         [ shift and go to state 44 ]
+  ! AND             [ shift and go to state 45 ]
+  ! OR              [ shift and go to state 46 ]
+  ! GREATEREQ       [ shift and go to state 47 ]
+  ! LESSEQ          [ shift and go to state 48 ]
+  ! NOTEQ           [ shift and go to state 49 ]
+
+    conditional_operators          shift and go to state 41
+
+state 73
+
+    (38) expr -> expr PLUS expr .
+    (36) expr -> expr . MULTIPLY expr
+    (37) expr -> expr . DIVIDE expr
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . MOD expr
+    (41) expr -> expr . EXPONENT expr
+    (57) expr -> expr . conditional_operators expr
+    (59) conditional_operators -> . EQEQ
+    (60) conditional_operators -> . LESS
+    (61) conditional_operators -> . GREATER
+    (62) conditional_operators -> . AND
+    (63) conditional_operators -> . OR
+    (64) conditional_operators -> . GREATEREQ
+    (65) conditional_operators -> . LESSEQ
+    (66) conditional_operators -> . NOTEQ
+
+    PLUS            reduce using rule 38 (expr -> expr PLUS expr .)
+    MINUS           reduce using rule 38 (expr -> expr PLUS expr .)
+    EQEQ            reduce using rule 38 (expr -> expr PLUS expr .)
+    LESS            reduce using rule 38 (expr -> expr PLUS expr .)
+    GREATER         reduce using rule 38 (expr -> expr PLUS expr .)
+    AND             reduce using rule 38 (expr -> expr PLUS expr .)
+    OR              reduce using rule 38 (expr -> expr PLUS expr .)
+    GREATEREQ       reduce using rule 38 (expr -> expr PLUS expr .)
+    LESSEQ          reduce using rule 38 (expr -> expr PLUS expr .)
+    NOTEQ           reduce using rule 38 (expr -> expr PLUS expr .)
+    SEMICOLON       reduce using rule 38 (expr -> expr PLUS expr .)
+    RPAR            reduce using rule 38 (expr -> expr PLUS expr .)
+    COMMA           reduce using rule 38 (expr -> expr PLUS expr .)
+    MULTIPLY        shift and go to state 35
+    DIVIDE          shift and go to state 36
+    MOD             shift and go to state 39
+    EXPONENT        shift and go to state 40
+
+  ! MULTIPLY        [ reduce using rule 38 (expr -> expr PLUS expr .) ]
+  ! DIVIDE          [ reduce using rule 38 (expr -> expr PLUS expr .) ]
+  ! MOD             [ reduce using rule 38 (expr -> expr PLUS expr .) ]
+  ! EXPONENT        [ reduce using rule 38 (expr -> expr PLUS expr .) ]
+  ! PLUS            [ shift and go to state 37 ]
+  ! MINUS           [ shift and go to state 38 ]
+  ! EQEQ            [ shift and go to state 42 ]
+  ! LESS            [ shift and go to state 43 ]
+  ! GREATER         [ shift and go to state 44 ]
+  ! AND             [ shift and go to state 45 ]
+  ! OR              [ shift and go to state 46 ]
+  ! GREATEREQ       [ shift and go to state 47 ]
+  ! LESSEQ          [ shift and go to state 48 ]
+  ! NOTEQ           [ shift and go to state 49 ]
+
+    conditional_operators          shift and go to state 41
+
+state 74
+
+    (39) expr -> expr MINUS expr .
+    (36) expr -> expr . MULTIPLY expr
+    (37) expr -> expr . DIVIDE expr
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . MOD expr
+    (41) expr -> expr . EXPONENT expr
+    (57) expr -> expr . conditional_operators expr
+    (59) conditional_operators -> . EQEQ
+    (60) conditional_operators -> . LESS
+    (61) conditional_operators -> . GREATER
+    (62) conditional_operators -> . AND
+    (63) conditional_operators -> . OR
+    (64) conditional_operators -> . GREATEREQ
+    (65) conditional_operators -> . LESSEQ
+    (66) conditional_operators -> . NOTEQ
+
+    PLUS            reduce using rule 39 (expr -> expr MINUS expr .)
+    MINUS           reduce using rule 39 (expr -> expr MINUS expr .)
+    EQEQ            reduce using rule 39 (expr -> expr MINUS expr .)
+    LESS            reduce using rule 39 (expr -> expr MINUS expr .)
+    GREATER         reduce using rule 39 (expr -> expr MINUS expr .)
+    AND             reduce using rule 39 (expr -> expr MINUS expr .)
+    OR              reduce using rule 39 (expr -> expr MINUS expr .)
+    GREATEREQ       reduce using rule 39 (expr -> expr MINUS expr .)
+    LESSEQ          reduce using rule 39 (expr -> expr MINUS expr .)
+    NOTEQ           reduce using rule 39 (expr -> expr MINUS expr .)
+    SEMICOLON       reduce using rule 39 (expr -> expr MINUS expr .)
+    RPAR            reduce using rule 39 (expr -> expr MINUS expr .)
+    COMMA           reduce using rule 39 (expr -> expr MINUS expr .)
+    MULTIPLY        shift and go to state 35
+    DIVIDE          shift and go to state 36
+    MOD             shift and go to state 39
+    EXPONENT        shift and go to state 40
+
+  ! MULTIPLY        [ reduce using rule 39 (expr -> expr MINUS expr .) ]
+  ! DIVIDE          [ reduce using rule 39 (expr -> expr MINUS expr .) ]
+  ! MOD             [ reduce using rule 39 (expr -> expr MINUS expr .) ]
+  ! EXPONENT        [ reduce using rule 39 (expr -> expr MINUS expr .) ]
+  ! PLUS            [ shift and go to state 37 ]
+  ! MINUS           [ shift and go to state 38 ]
+  ! EQEQ            [ shift and go to state 42 ]
+  ! LESS            [ shift and go to state 43 ]
+  ! GREATER         [ shift and go to state 44 ]
+  ! AND             [ shift and go to state 45 ]
+  ! OR              [ shift and go to state 46 ]
+  ! GREATEREQ       [ shift and go to state 47 ]
+  ! LESSEQ          [ shift and go to state 48 ]
+  ! NOTEQ           [ shift and go to state 49 ]
+
+    conditional_operators          shift and go to state 41
+
+state 75
+
+    (40) expr -> expr MOD expr .
+    (36) expr -> expr . MULTIPLY expr
+    (37) expr -> expr . DIVIDE expr
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . MOD expr
+    (41) expr -> expr . EXPONENT expr
+    (57) expr -> expr . conditional_operators expr
+    (59) conditional_operators -> . EQEQ
+    (60) conditional_operators -> . LESS
+    (61) conditional_operators -> . GREATER
+    (62) conditional_operators -> . AND
+    (63) conditional_operators -> . OR
+    (64) conditional_operators -> . GREATEREQ
+    (65) conditional_operators -> . LESSEQ
+    (66) conditional_operators -> . NOTEQ
+
+    MULTIPLY        reduce using rule 40 (expr -> expr MOD expr .)
+    DIVIDE          reduce using rule 40 (expr -> expr MOD expr .)
+    PLUS            reduce using rule 40 (expr -> expr MOD expr .)
+    MINUS           reduce using rule 40 (expr -> expr MOD expr .)
+    MOD             reduce using rule 40 (expr -> expr MOD expr .)
+    EXPONENT        reduce using rule 40 (expr -> expr MOD expr .)
+    EQEQ            reduce using rule 40 (expr -> expr MOD expr .)
+    LESS            reduce using rule 40 (expr -> expr MOD expr .)
+    GREATER         reduce using rule 40 (expr -> expr MOD expr .)
+    AND             reduce using rule 40 (expr -> expr MOD expr .)
+    OR              reduce using rule 40 (expr -> expr MOD expr .)
+    GREATEREQ       reduce using rule 40 (expr -> expr MOD expr .)
+    LESSEQ          reduce using rule 40 (expr -> expr MOD expr .)
+    NOTEQ           reduce using rule 40 (expr -> expr MOD expr .)
+    SEMICOLON       reduce using rule 40 (expr -> expr MOD expr .)
+    RPAR            reduce using rule 40 (expr -> expr MOD expr .)
+    COMMA           reduce using rule 40 (expr -> expr MOD expr .)
+
+  ! MULTIPLY        [ shift and go to state 35 ]
+  ! DIVIDE          [ shift and go to state 36 ]
+  ! PLUS            [ shift and go to state 37 ]
+  ! MINUS           [ shift and go to state 38 ]
+  ! MOD             [ shift and go to state 39 ]
+  ! EXPONENT        [ shift and go to state 40 ]
+  ! EQEQ            [ shift and go to state 42 ]
+  ! LESS            [ shift and go to state 43 ]
+  ! GREATER         [ shift and go to state 44 ]
+  ! AND             [ shift and go to state 45 ]
+  ! OR              [ shift and go to state 46 ]
+  ! GREATEREQ       [ shift and go to state 47 ]
+  ! LESSEQ          [ shift and go to state 48 ]
+  ! NOTEQ           [ shift and go to state 49 ]
+
+    conditional_operators          shift and go to state 41
+
+state 76
+
+    (41) expr -> expr EXPONENT expr .
+    (36) expr -> expr . MULTIPLY expr
+    (37) expr -> expr . DIVIDE expr
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . MOD expr
+    (41) expr -> expr . EXPONENT expr
+    (57) expr -> expr . conditional_operators expr
+    (59) conditional_operators -> . EQEQ
+    (60) conditional_operators -> . LESS
+    (61) conditional_operators -> . GREATER
+    (62) conditional_operators -> . AND
+    (63) conditional_operators -> . OR
+    (64) conditional_operators -> . GREATEREQ
+    (65) conditional_operators -> . LESSEQ
+    (66) conditional_operators -> . NOTEQ
+
+    PLUS            reduce using rule 41 (expr -> expr EXPONENT expr .)
+    MINUS           reduce using rule 41 (expr -> expr EXPONENT expr .)
+    EQEQ            reduce using rule 41 (expr -> expr EXPONENT expr .)
+    LESS            reduce using rule 41 (expr -> expr EXPONENT expr .)
+    GREATER         reduce using rule 41 (expr -> expr EXPONENT expr .)
+    AND             reduce using rule 41 (expr -> expr EXPONENT expr .)
+    OR              reduce using rule 41 (expr -> expr EXPONENT expr .)
+    GREATEREQ       reduce using rule 41 (expr -> expr EXPONENT expr .)
+    LESSEQ          reduce using rule 41 (expr -> expr EXPONENT expr .)
+    NOTEQ           reduce using rule 41 (expr -> expr EXPONENT expr .)
+    SEMICOLON       reduce using rule 41 (expr -> expr EXPONENT expr .)
+    RPAR            reduce using rule 41 (expr -> expr EXPONENT expr .)
+    COMMA           reduce using rule 41 (expr -> expr EXPONENT expr .)
+    MULTIPLY        shift and go to state 35
+    DIVIDE          shift and go to state 36
+    MOD             shift and go to state 39
+    EXPONENT        shift and go to state 40
+
+  ! MULTIPLY        [ reduce using rule 41 (expr -> expr EXPONENT expr .) ]
+  ! DIVIDE          [ reduce using rule 41 (expr -> expr EXPONENT expr .) ]
+  ! MOD             [ reduce using rule 41 (expr -> expr EXPONENT expr .) ]
+  ! EXPONENT        [ reduce using rule 41 (expr -> expr EXPONENT expr .) ]
+  ! PLUS            [ shift and go to state 37 ]
+  ! MINUS           [ shift and go to state 38 ]
+  ! EQEQ            [ shift and go to state 42 ]
+  ! LESS            [ shift and go to state 43 ]
+  ! GREATER         [ shift and go to state 44 ]
+  ! AND             [ shift and go to state 45 ]
+  ! OR              [ shift and go to state 46 ]
+  ! GREATEREQ       [ shift and go to state 47 ]
+  ! LESSEQ          [ shift and go to state 48 ]
+  ! NOTEQ           [ shift and go to state 49 ]
+
+    conditional_operators          shift and go to state 41
+
+state 77
+
+    (57) expr -> expr conditional_operators expr .
+    (36) expr -> expr . MULTIPLY expr
+    (37) expr -> expr . DIVIDE expr
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . MOD expr
+    (41) expr -> expr . EXPONENT expr
+    (57) expr -> expr . conditional_operators expr
+    (59) conditional_operators -> . EQEQ
+    (60) conditional_operators -> . LESS
+    (61) conditional_operators -> . GREATER
+    (62) conditional_operators -> . AND
+    (63) conditional_operators -> . OR
+    (64) conditional_operators -> . GREATEREQ
+    (65) conditional_operators -> . LESSEQ
+    (66) conditional_operators -> . NOTEQ
+
+  ! shift/reduce conflict for MULTIPLY resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for MOD resolved as shift
+  ! shift/reduce conflict for EXPONENT resolved as shift
+  ! shift/reduce conflict for EQEQ resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+  ! shift/reduce conflict for GREATER resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for GREATEREQ resolved as shift
+  ! shift/reduce conflict for LESSEQ resolved as shift
+  ! shift/reduce conflict for NOTEQ resolved as shift
+    SEMICOLON       reduce using rule 57 (expr -> expr conditional_operators expr .)
+    RPAR            reduce using rule 57 (expr -> expr conditional_operators expr .)
+    COMMA           reduce using rule 57 (expr -> expr conditional_operators expr .)
+    MULTIPLY        shift and go to state 35
+    DIVIDE          shift and go to state 36
+    PLUS            shift and go to state 37
+    MINUS           shift and go to state 38
+    MOD             shift and go to state 39
+    EXPONENT        shift and go to state 40
+    EQEQ            shift and go to state 42
+    LESS            shift and go to state 43
+    GREATER         shift and go to state 44
+    AND             shift and go to state 45
+    OR              shift and go to state 46
+    GREATEREQ       shift and go to state 47
+    LESSEQ          shift and go to state 48
+    NOTEQ           shift and go to state 49
+
+  ! MULTIPLY        [ reduce using rule 57 (expr -> expr conditional_operators expr .) ]
+  ! DIVIDE          [ reduce using rule 57 (expr -> expr conditional_operators expr .) ]
+  ! PLUS            [ reduce using rule 57 (expr -> expr conditional_operators expr .) ]
+  ! MINUS           [ reduce using rule 57 (expr -> expr conditional_operators expr .) ]
+  ! MOD             [ reduce using rule 57 (expr -> expr conditional_operators expr .) ]
+  ! EXPONENT        [ reduce using rule 57 (expr -> expr conditional_operators expr .) ]
+  ! EQEQ            [ reduce using rule 57 (expr -> expr conditional_operators expr .) ]
+  ! LESS            [ reduce using rule 57 (expr -> expr conditional_operators expr .) ]
+  ! GREATER         [ reduce using rule 57 (expr -> expr conditional_operators expr .) ]
+  ! AND             [ reduce using rule 57 (expr -> expr conditional_operators expr .) ]
+  ! OR              [ reduce using rule 57 (expr -> expr conditional_operators expr .) ]
+  ! GREATEREQ       [ reduce using rule 57 (expr -> expr conditional_operators expr .) ]
+  ! LESSEQ          [ reduce using rule 57 (expr -> expr conditional_operators expr .) ]
+  ! NOTEQ           [ reduce using rule 57 (expr -> expr conditional_operators expr .) ]
+
+    conditional_operators          shift and go to state 41
+
+state 78
+
+    (34) expr -> LPAR expr RPAR .
+
+    MULTIPLY        reduce using rule 34 (expr -> LPAR expr RPAR .)
+    DIVIDE          reduce using rule 34 (expr -> LPAR expr RPAR .)
+    PLUS            reduce using rule 34 (expr -> LPAR expr RPAR .)
+    MINUS           reduce using rule 34 (expr -> LPAR expr RPAR .)
+    MOD             reduce using rule 34 (expr -> LPAR expr RPAR .)
+    EXPONENT        reduce using rule 34 (expr -> LPAR expr RPAR .)
+    EQEQ            reduce using rule 34 (expr -> LPAR expr RPAR .)
+    LESS            reduce using rule 34 (expr -> LPAR expr RPAR .)
+    GREATER         reduce using rule 34 (expr -> LPAR expr RPAR .)
+    AND             reduce using rule 34 (expr -> LPAR expr RPAR .)
+    OR              reduce using rule 34 (expr -> LPAR expr RPAR .)
+    GREATEREQ       reduce using rule 34 (expr -> LPAR expr RPAR .)
+    LESSEQ          reduce using rule 34 (expr -> LPAR expr RPAR .)
+    NOTEQ           reduce using rule 34 (expr -> LPAR expr RPAR .)
+    SEMICOLON       reduce using rule 34 (expr -> LPAR expr RPAR .)
+    RPAR            reduce using rule 34 (expr -> LPAR expr RPAR .)
+    COMMA           reduce using rule 34 (expr -> LPAR expr RPAR .)
+
+
+state 79
+
+    (22) struct_access -> NAME DOT . NAME
+
+    NAME            shift and go to state 88
+
+
+state 80
+
+    (25) var_initialize -> identifier NAME EQUALS . expr
+    (26) var_initialize -> identifier NAME EQUALS . NAME
+    (34) expr -> . LPAR expr RPAR
+    (35) expr -> . unary_op
+    (36) expr -> . expr MULTIPLY expr
+    (37) expr -> . expr DIVIDE expr
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr MOD expr
+    (41) expr -> . expr EXPONENT expr
+    (42) expr -> . DOUBLE
+    (43) expr -> . INT
+    (44) expr -> . MINUS DOUBLE
+    (45) expr -> . MINUS INT
+    (46) expr -> . STRING
+    (47) expr -> . TRUE
+    (48) expr -> . FALSE
+    (49) expr -> . var_access
+    (50) expr -> . struct_access
+    (51) expr -> . empty
+    (57) expr -> . expr conditional_operators expr
+    (58) expr -> . NOT expr
+    (52) unary_op -> . var_access INCREMENT
+    (53) unary_op -> . var_access DECREMENT
+    (54) unary_op -> . struct_access INCREMENT
+    (55) unary_op -> . struct_access DECREMENT
+    (56) unary_op -> . MINUS var_access
+    (21) var_access -> . NAME
+    (22) struct_access -> . NAME DOT NAME
+    (73) empty -> .
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    NAME            shift and go to state 89
+    LPAR            shift and go to state 15
+    DOUBLE          shift and go to state 17
+    INT             shift and go to state 18
+    MINUS           shift and go to state 16
+    STRING          shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    NOT             shift and go to state 23
+    MULTIPLY        reduce using rule 73 (empty -> .)
+    DIVIDE          reduce using rule 73 (empty -> .)
+    PLUS            reduce using rule 73 (empty -> .)
+    MOD             reduce using rule 73 (empty -> .)
+    EXPONENT        reduce using rule 73 (empty -> .)
+    EQEQ            reduce using rule 73 (empty -> .)
+    LESS            reduce using rule 73 (empty -> .)
+    GREATER         reduce using rule 73 (empty -> .)
+    AND             reduce using rule 73 (empty -> .)
+    OR              reduce using rule 73 (empty -> .)
+    GREATEREQ       reduce using rule 73 (empty -> .)
+    LESSEQ          reduce using rule 73 (empty -> .)
+    NOTEQ           reduce using rule 73 (empty -> .)
+    SEMICOLON       reduce using rule 73 (empty -> .)
+
+  ! MINUS           [ reduce using rule 73 (empty -> .) ]
+
+    expr                           shift and go to state 90
+    unary_op                       shift and go to state 53
+    var_access                     shift and go to state 54
+    struct_access                  shift and go to state 22
+    empty                          shift and go to state 55
+
+state 81
+
+    (23) var_assign -> NAME EQUALS expr .
+    (36) expr -> expr . MULTIPLY expr
+    (37) expr -> expr . DIVIDE expr
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . MOD expr
+    (41) expr -> expr . EXPONENT expr
+    (57) expr -> expr . conditional_operators expr
+    (59) conditional_operators -> . EQEQ
+    (60) conditional_operators -> . LESS
+    (61) conditional_operators -> . GREATER
+    (62) conditional_operators -> . AND
+    (63) conditional_operators -> . OR
+    (64) conditional_operators -> . GREATEREQ
+    (65) conditional_operators -> . LESSEQ
+    (66) conditional_operators -> . NOTEQ
+
+    SEMICOLON       reduce using rule 23 (var_assign -> NAME EQUALS expr .)
+    MULTIPLY        shift and go to state 35
+    DIVIDE          shift and go to state 36
+    PLUS            shift and go to state 37
+    MINUS           shift and go to state 38
+    MOD             shift and go to state 39
+    EXPONENT        shift and go to state 40
+    EQEQ            shift and go to state 42
+    LESS            shift and go to state 43
+    GREATER         shift and go to state 44
+    AND             shift and go to state 45
+    OR              shift and go to state 46
+    GREATEREQ       shift and go to state 47
+    LESSEQ          shift and go to state 48
+    NOTEQ           shift and go to state 49
+
+    conditional_operators          shift and go to state 41
+
+state 82
+
+    (33) struct_attribute_initialize -> NAME DOT NAME . EQUALS expr
+    (22) struct_access -> NAME DOT NAME .
+
+    EQUALS          shift and go to state 91
+    INCREMENT       reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    DECREMENT       reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    MULTIPLY        reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    DIVIDE          reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    PLUS            reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    MINUS           reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    MOD             reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    EXPONENT        reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    EQEQ            reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    LESS            reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    GREATER         reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    AND             reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    OR              reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    GREATEREQ       reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    LESSEQ          reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    NOTEQ           reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    SEMICOLON       reduce using rule 22 (struct_access -> NAME DOT NAME .)
+
+
+state 83
+
+    (68) function_call -> PRINT LPAR opt_args . RPAR
+
+    RPAR            shift and go to state 92
+
+
+state 84
+
+    (69) opt_args -> expr . moreargs
+    (36) expr -> expr . MULTIPLY expr
+    (37) expr -> expr . DIVIDE expr
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . MOD expr
+    (41) expr -> expr . EXPONENT expr
+    (57) expr -> expr . conditional_operators expr
+    (70) moreargs -> . COMMA expr moreargs
+    (72) moreargs -> . empty
+    (59) conditional_operators -> . EQEQ
+    (60) conditional_operators -> . LESS
+    (61) conditional_operators -> . GREATER
+    (62) conditional_operators -> . AND
+    (63) conditional_operators -> . OR
+    (64) conditional_operators -> . GREATEREQ
+    (65) conditional_operators -> . LESSEQ
+    (66) conditional_operators -> . NOTEQ
+    (73) empty -> .
+
+    MULTIPLY        shift and go to state 35
+    DIVIDE          shift and go to state 36
+    PLUS            shift and go to state 37
+    MINUS           shift and go to state 38
+    MOD             shift and go to state 39
+    EXPONENT        shift and go to state 40
+    COMMA           shift and go to state 94
+    EQEQ            shift and go to state 42
+    LESS            shift and go to state 43
+    GREATER         shift and go to state 44
+    AND             shift and go to state 45
+    OR              shift and go to state 46
+    GREATEREQ       shift and go to state 47
+    LESSEQ          shift and go to state 48
+    NOTEQ           shift and go to state 49
+    RPAR            reduce using rule 73 (empty -> .)
+
+    moreargs                       shift and go to state 93
+    conditional_operators          shift and go to state 41
+    empty                          shift and go to state 95
+
+state 85
+
+    (71) opt_args -> empty .
+    (51) expr -> empty .
+
+  ! reduce/reduce conflict for RPAR resolved using rule 51 (expr -> empty .)
+    MULTIPLY        reduce using rule 51 (expr -> empty .)
+    DIVIDE          reduce using rule 51 (expr -> empty .)
+    PLUS            reduce using rule 51 (expr -> empty .)
+    MINUS           reduce using rule 51 (expr -> empty .)
+    MOD             reduce using rule 51 (expr -> empty .)
+    EXPONENT        reduce using rule 51 (expr -> empty .)
+    COMMA           reduce using rule 51 (expr -> empty .)
+    EQEQ            reduce using rule 51 (expr -> empty .)
+    LESS            reduce using rule 51 (expr -> empty .)
+    GREATER         reduce using rule 51 (expr -> empty .)
+    AND             reduce using rule 51 (expr -> empty .)
+    OR              reduce using rule 51 (expr -> empty .)
+    GREATEREQ       reduce using rule 51 (expr -> empty .)
+    LESSEQ          reduce using rule 51 (expr -> empty .)
+    NOTEQ           reduce using rule 51 (expr -> empty .)
+    RPAR            reduce using rule 51 (expr -> empty .)
+
+  ! RPAR            [ reduce using rule 71 (opt_args -> empty .) ]
+
+
+state 86
+
+    (67) loop -> DO LBRACE stmts . RBRACE WHILE LPAR expr RPAR
+
+    RBRACE          shift and go to state 96
+
+
+state 87
+
+    (15) struct_definition -> STRUCT NAME EQUALS . LBRACE attribute_dec RBRACE
+
+    LBRACE          shift and go to state 97
+
+
+state 88
+
+    (22) struct_access -> NAME DOT NAME .
+
+    INCREMENT       reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    DECREMENT       reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    RPAR            reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    MULTIPLY        reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    DIVIDE          reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    PLUS            reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    MINUS           reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    MOD             reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    EXPONENT        reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    EQEQ            reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    LESS            reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    GREATER         reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    AND             reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    OR              reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    GREATEREQ       reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    LESSEQ          reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    NOTEQ           reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    SEMICOLON       reduce using rule 22 (struct_access -> NAME DOT NAME .)
+    COMMA           reduce using rule 22 (struct_access -> NAME DOT NAME .)
+
+
+state 89
+
+    (26) var_initialize -> identifier NAME EQUALS NAME .
+    (21) var_access -> NAME .
+    (22) struct_access -> NAME . DOT NAME
+
+  ! reduce/reduce conflict for SEMICOLON resolved using rule 21 (var_access -> NAME .)
+    INCREMENT       reduce using rule 21 (var_access -> NAME .)
+    DECREMENT       reduce using rule 21 (var_access -> NAME .)
+    MULTIPLY        reduce using rule 21 (var_access -> NAME .)
+    DIVIDE          reduce using rule 21 (var_access -> NAME .)
+    PLUS            reduce using rule 21 (var_access -> NAME .)
+    MINUS           reduce using rule 21 (var_access -> NAME .)
+    MOD             reduce using rule 21 (var_access -> NAME .)
+    EXPONENT        reduce using rule 21 (var_access -> NAME .)
+    EQEQ            reduce using rule 21 (var_access -> NAME .)
+    LESS            reduce using rule 21 (var_access -> NAME .)
+    GREATER         reduce using rule 21 (var_access -> NAME .)
+    AND             reduce using rule 21 (var_access -> NAME .)
+    OR              reduce using rule 21 (var_access -> NAME .)
+    GREATEREQ       reduce using rule 21 (var_access -> NAME .)
+    LESSEQ          reduce using rule 21 (var_access -> NAME .)
+    NOTEQ           reduce using rule 21 (var_access -> NAME .)
+    SEMICOLON       reduce using rule 21 (var_access -> NAME .)
+    DOT             shift and go to state 79
+
+  ! SEMICOLON       [ reduce using rule 26 (var_initialize -> identifier NAME EQUALS NAME .) ]
+
+
+state 90
+
+    (25) var_initialize -> identifier NAME EQUALS expr .
+    (36) expr -> expr . MULTIPLY expr
+    (37) expr -> expr . DIVIDE expr
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . MOD expr
+    (41) expr -> expr . EXPONENT expr
+    (57) expr -> expr . conditional_operators expr
+    (59) conditional_operators -> . EQEQ
+    (60) conditional_operators -> . LESS
+    (61) conditional_operators -> . GREATER
+    (62) conditional_operators -> . AND
+    (63) conditional_operators -> . OR
+    (64) conditional_operators -> . GREATEREQ
+    (65) conditional_operators -> . LESSEQ
+    (66) conditional_operators -> . NOTEQ
+
+    SEMICOLON       reduce using rule 25 (var_initialize -> identifier NAME EQUALS expr .)
+    MULTIPLY        shift and go to state 35
+    DIVIDE          shift and go to state 36
+    PLUS            shift and go to state 37
+    MINUS           shift and go to state 38
+    MOD             shift and go to state 39
+    EXPONENT        shift and go to state 40
+    EQEQ            shift and go to state 42
+    LESS            shift and go to state 43
+    GREATER         shift and go to state 44
+    AND             shift and go to state 45
+    OR              shift and go to state 46
+    GREATEREQ       shift and go to state 47
+    LESSEQ          shift and go to state 48
+    NOTEQ           shift and go to state 49
+
+    conditional_operators          shift and go to state 41
+
+state 91
+
+    (33) struct_attribute_initialize -> NAME DOT NAME EQUALS . expr
+    (34) expr -> . LPAR expr RPAR
+    (35) expr -> . unary_op
+    (36) expr -> . expr MULTIPLY expr
+    (37) expr -> . expr DIVIDE expr
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr MOD expr
+    (41) expr -> . expr EXPONENT expr
+    (42) expr -> . DOUBLE
+    (43) expr -> . INT
+    (44) expr -> . MINUS DOUBLE
+    (45) expr -> . MINUS INT
+    (46) expr -> . STRING
+    (47) expr -> . TRUE
+    (48) expr -> . FALSE
+    (49) expr -> . var_access
+    (50) expr -> . struct_access
+    (51) expr -> . empty
+    (57) expr -> . expr conditional_operators expr
+    (58) expr -> . NOT expr
+    (52) unary_op -> . var_access INCREMENT
+    (53) unary_op -> . var_access DECREMENT
+    (54) unary_op -> . struct_access INCREMENT
+    (55) unary_op -> . struct_access DECREMENT
+    (56) unary_op -> . MINUS var_access
+    (21) var_access -> . NAME
+    (22) struct_access -> . NAME DOT NAME
+    (73) empty -> .
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    LPAR            shift and go to state 15
+    DOUBLE          shift and go to state 17
+    INT             shift and go to state 18
+    MINUS           shift and go to state 16
+    STRING          shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    NOT             shift and go to state 23
+    NAME            shift and go to state 56
+    MULTIPLY        reduce using rule 73 (empty -> .)
+    DIVIDE          reduce using rule 73 (empty -> .)
+    PLUS            reduce using rule 73 (empty -> .)
+    MOD             reduce using rule 73 (empty -> .)
+    EXPONENT        reduce using rule 73 (empty -> .)
+    EQEQ            reduce using rule 73 (empty -> .)
+    LESS            reduce using rule 73 (empty -> .)
+    GREATER         reduce using rule 73 (empty -> .)
+    AND             reduce using rule 73 (empty -> .)
+    OR              reduce using rule 73 (empty -> .)
+    GREATEREQ       reduce using rule 73 (empty -> .)
+    LESSEQ          reduce using rule 73 (empty -> .)
+    NOTEQ           reduce using rule 73 (empty -> .)
+    SEMICOLON       reduce using rule 73 (empty -> .)
+
+  ! MINUS           [ reduce using rule 73 (empty -> .) ]
+
+    expr                           shift and go to state 98
+    unary_op                       shift and go to state 53
+    var_access                     shift and go to state 54
+    struct_access                  shift and go to state 22
+    empty                          shift and go to state 55
+
+state 92
+
+    (68) function_call -> PRINT LPAR opt_args RPAR .
+
+    SEMICOLON       reduce using rule 68 (function_call -> PRINT LPAR opt_args RPAR .)
+
+
+state 93
+
+    (69) opt_args -> expr moreargs .
+
+    RPAR            reduce using rule 69 (opt_args -> expr moreargs .)
+
+
+state 94
+
+    (70) moreargs -> COMMA . expr moreargs
+    (34) expr -> . LPAR expr RPAR
+    (35) expr -> . unary_op
+    (36) expr -> . expr MULTIPLY expr
+    (37) expr -> . expr DIVIDE expr
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr MOD expr
+    (41) expr -> . expr EXPONENT expr
+    (42) expr -> . DOUBLE
+    (43) expr -> . INT
+    (44) expr -> . MINUS DOUBLE
+    (45) expr -> . MINUS INT
+    (46) expr -> . STRING
+    (47) expr -> . TRUE
+    (48) expr -> . FALSE
+    (49) expr -> . var_access
+    (50) expr -> . struct_access
+    (51) expr -> . empty
+    (57) expr -> . expr conditional_operators expr
+    (58) expr -> . NOT expr
+    (52) unary_op -> . var_access INCREMENT
+    (53) unary_op -> . var_access DECREMENT
+    (54) unary_op -> . struct_access INCREMENT
+    (55) unary_op -> . struct_access DECREMENT
+    (56) unary_op -> . MINUS var_access
+    (21) var_access -> . NAME
+    (22) struct_access -> . NAME DOT NAME
+    (73) empty -> .
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    LPAR            shift and go to state 15
+    DOUBLE          shift and go to state 17
+    INT             shift and go to state 18
+    MINUS           shift and go to state 16
+    STRING          shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    NOT             shift and go to state 23
+    NAME            shift and go to state 56
+    MULTIPLY        reduce using rule 73 (empty -> .)
+    DIVIDE          reduce using rule 73 (empty -> .)
+    PLUS            reduce using rule 73 (empty -> .)
+    MOD             reduce using rule 73 (empty -> .)
+    EXPONENT        reduce using rule 73 (empty -> .)
+    COMMA           reduce using rule 73 (empty -> .)
+    EQEQ            reduce using rule 73 (empty -> .)
+    LESS            reduce using rule 73 (empty -> .)
+    GREATER         reduce using rule 73 (empty -> .)
+    AND             reduce using rule 73 (empty -> .)
+    OR              reduce using rule 73 (empty -> .)
+    GREATEREQ       reduce using rule 73 (empty -> .)
+    LESSEQ          reduce using rule 73 (empty -> .)
+    NOTEQ           reduce using rule 73 (empty -> .)
+    RPAR            reduce using rule 73 (empty -> .)
+
+  ! MINUS           [ reduce using rule 73 (empty -> .) ]
+
+    expr                           shift and go to state 99
+    unary_op                       shift and go to state 53
+    var_access                     shift and go to state 54
+    struct_access                  shift and go to state 22
+    empty                          shift and go to state 55
+
+state 95
+
+    (72) moreargs -> empty .
+
+    RPAR            reduce using rule 72 (moreargs -> empty .)
+
+
+state 96
+
+    (67) loop -> DO LBRACE stmts RBRACE . WHILE LPAR expr RPAR
+
+    WHILE           shift and go to state 100
+
+
+state 97
+
+    (15) struct_definition -> STRUCT NAME EQUALS LBRACE . attribute_dec RBRACE
+    (16) attribute_dec -> . var_dec SEMICOLON attribute_dec
+    (17) attribute_dec -> . var_initialize SEMICOLON attribute_dec
+    (18) attribute_dec -> . var_dec SEMICOLON
+    (19) attribute_dec -> . var_initialize SEMICOLON
+    (20) attribute_dec -> . empty
+    (24) var_dec -> . identifier NAME
+    (25) var_initialize -> . identifier NAME EQUALS expr
+    (26) var_initialize -> . identifier NAME EQUALS NAME
+    (73) empty -> .
+    (27) identifier -> . INTDEC
+    (28) identifier -> . DOUBLEDEC
+    (29) identifier -> . STRINGDEC
+    (30) identifier -> . BOOLDEC
+    (31) identifier -> . CHARDEC
+    (32) identifier -> . NAME
+
+    RBRACE          reduce using rule 73 (empty -> .)
+    INTDEC          shift and go to state 29
+    DOUBLEDEC       shift and go to state 30
+    STRINGDEC       shift and go to state 31
+    BOOLDEC         shift and go to state 32
+    CHARDEC         shift and go to state 33
+    NAME            shift and go to state 101
+
+    attribute_dec                  shift and go to state 102
+    var_dec                        shift and go to state 103
+    var_initialize                 shift and go to state 104
+    empty                          shift and go to state 105
+    identifier                     shift and go to state 24
+
+state 98
+
+    (33) struct_attribute_initialize -> NAME DOT NAME EQUALS expr .
+    (36) expr -> expr . MULTIPLY expr
+    (37) expr -> expr . DIVIDE expr
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . MOD expr
+    (41) expr -> expr . EXPONENT expr
+    (57) expr -> expr . conditional_operators expr
+    (59) conditional_operators -> . EQEQ
+    (60) conditional_operators -> . LESS
+    (61) conditional_operators -> . GREATER
+    (62) conditional_operators -> . AND
+    (63) conditional_operators -> . OR
+    (64) conditional_operators -> . GREATEREQ
+    (65) conditional_operators -> . LESSEQ
+    (66) conditional_operators -> . NOTEQ
+
+    SEMICOLON       reduce using rule 33 (struct_attribute_initialize -> NAME DOT NAME EQUALS expr .)
+    MULTIPLY        shift and go to state 35
+    DIVIDE          shift and go to state 36
+    PLUS            shift and go to state 37
+    MINUS           shift and go to state 38
+    MOD             shift and go to state 39
+    EXPONENT        shift and go to state 40
+    EQEQ            shift and go to state 42
+    LESS            shift and go to state 43
+    GREATER         shift and go to state 44
+    AND             shift and go to state 45
+    OR              shift and go to state 46
+    GREATEREQ       shift and go to state 47
+    LESSEQ          shift and go to state 48
+    NOTEQ           shift and go to state 49
+
+    conditional_operators          shift and go to state 41
+
+state 99
+
+    (70) moreargs -> COMMA expr . moreargs
+    (36) expr -> expr . MULTIPLY expr
+    (37) expr -> expr . DIVIDE expr
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . MOD expr
+    (41) expr -> expr . EXPONENT expr
+    (57) expr -> expr . conditional_operators expr
+    (70) moreargs -> . COMMA expr moreargs
+    (72) moreargs -> . empty
+    (59) conditional_operators -> . EQEQ
+    (60) conditional_operators -> . LESS
+    (61) conditional_operators -> . GREATER
+    (62) conditional_operators -> . AND
+    (63) conditional_operators -> . OR
+    (64) conditional_operators -> . GREATEREQ
+    (65) conditional_operators -> . LESSEQ
+    (66) conditional_operators -> . NOTEQ
+    (73) empty -> .
+
+    MULTIPLY        shift and go to state 35
+    DIVIDE          shift and go to state 36
+    PLUS            shift and go to state 37
+    MINUS           shift and go to state 38
+    MOD             shift and go to state 39
+    EXPONENT        shift and go to state 40
+    COMMA           shift and go to state 94
+    EQEQ            shift and go to state 42
+    LESS            shift and go to state 43
+    GREATER         shift and go to state 44
+    AND             shift and go to state 45
+    OR              shift and go to state 46
+    GREATEREQ       shift and go to state 47
+    LESSEQ          shift and go to state 48
+    NOTEQ           shift and go to state 49
+    RPAR            reduce using rule 73 (empty -> .)
+
+    moreargs                       shift and go to state 106
+    conditional_operators          shift and go to state 41
+    empty                          shift and go to state 95
+
+state 100
+
+    (67) loop -> DO LBRACE stmts RBRACE WHILE . LPAR expr RPAR
+
+    LPAR            shift and go to state 107
+
+
+state 101
+
+    (32) identifier -> NAME .
+
+    NAME            reduce using rule 32 (identifier -> NAME .)
+
+
+state 102
+
+    (15) struct_definition -> STRUCT NAME EQUALS LBRACE attribute_dec . RBRACE
+
+    RBRACE          shift and go to state 108
+
+
+state 103
+
+    (16) attribute_dec -> var_dec . SEMICOLON attribute_dec
+    (18) attribute_dec -> var_dec . SEMICOLON
+
+    SEMICOLON       shift and go to state 109
+
+
+state 104
+
+    (17) attribute_dec -> var_initialize . SEMICOLON attribute_dec
+    (19) attribute_dec -> var_initialize . SEMICOLON
+
+    SEMICOLON       shift and go to state 110
+
+
+state 105
+
+    (20) attribute_dec -> empty .
+
+    RBRACE          reduce using rule 20 (attribute_dec -> empty .)
+
+
+state 106
+
+    (70) moreargs -> COMMA expr moreargs .
+
+    RPAR            reduce using rule 70 (moreargs -> COMMA expr moreargs .)
+
+
+state 107
+
+    (67) loop -> DO LBRACE stmts RBRACE WHILE LPAR . expr RPAR
+    (34) expr -> . LPAR expr RPAR
+    (35) expr -> . unary_op
+    (36) expr -> . expr MULTIPLY expr
+    (37) expr -> . expr DIVIDE expr
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr MOD expr
+    (41) expr -> . expr EXPONENT expr
+    (42) expr -> . DOUBLE
+    (43) expr -> . INT
+    (44) expr -> . MINUS DOUBLE
+    (45) expr -> . MINUS INT
+    (46) expr -> . STRING
+    (47) expr -> . TRUE
+    (48) expr -> . FALSE
+    (49) expr -> . var_access
+    (50) expr -> . struct_access
+    (51) expr -> . empty
+    (57) expr -> . expr conditional_operators expr
+    (58) expr -> . NOT expr
+    (52) unary_op -> . var_access INCREMENT
+    (53) unary_op -> . var_access DECREMENT
+    (54) unary_op -> . struct_access INCREMENT
+    (55) unary_op -> . struct_access DECREMENT
+    (56) unary_op -> . MINUS var_access
+    (21) var_access -> . NAME
+    (22) struct_access -> . NAME DOT NAME
+    (73) empty -> .
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    LPAR            shift and go to state 15
+    DOUBLE          shift and go to state 17
+    INT             shift and go to state 18
+    MINUS           shift and go to state 16
+    STRING          shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    NOT             shift and go to state 23
+    NAME            shift and go to state 56
+    RPAR            reduce using rule 73 (empty -> .)
+    MULTIPLY        reduce using rule 73 (empty -> .)
+    DIVIDE          reduce using rule 73 (empty -> .)
+    PLUS            reduce using rule 73 (empty -> .)
+    MOD             reduce using rule 73 (empty -> .)
+    EXPONENT        reduce using rule 73 (empty -> .)
+    EQEQ            reduce using rule 73 (empty -> .)
+    LESS            reduce using rule 73 (empty -> .)
+    GREATER         reduce using rule 73 (empty -> .)
+    AND             reduce using rule 73 (empty -> .)
+    OR              reduce using rule 73 (empty -> .)
+    GREATEREQ       reduce using rule 73 (empty -> .)
+    LESSEQ          reduce using rule 73 (empty -> .)
+    NOTEQ           reduce using rule 73 (empty -> .)
+
+  ! MINUS           [ reduce using rule 73 (empty -> .) ]
+
+    expr                           shift and go to state 111
+    unary_op                       shift and go to state 53
+    var_access                     shift and go to state 54
+    struct_access                  shift and go to state 22
+    empty                          shift and go to state 55
+
+state 108
+
+    (15) struct_definition -> STRUCT NAME EQUALS LBRACE attribute_dec RBRACE .
+
+    SEMICOLON       reduce using rule 15 (struct_definition -> STRUCT NAME EQUALS LBRACE attribute_dec RBRACE .)
+
+
+state 109
+
+    (16) attribute_dec -> var_dec SEMICOLON . attribute_dec
+    (18) attribute_dec -> var_dec SEMICOLON .
+    (16) attribute_dec -> . var_dec SEMICOLON attribute_dec
+    (17) attribute_dec -> . var_initialize SEMICOLON attribute_dec
+    (18) attribute_dec -> . var_dec SEMICOLON
+    (19) attribute_dec -> . var_initialize SEMICOLON
+    (20) attribute_dec -> . empty
+    (24) var_dec -> . identifier NAME
+    (25) var_initialize -> . identifier NAME EQUALS expr
+    (26) var_initialize -> . identifier NAME EQUALS NAME
+    (73) empty -> .
+    (27) identifier -> . INTDEC
+    (28) identifier -> . DOUBLEDEC
+    (29) identifier -> . STRINGDEC
+    (30) identifier -> . BOOLDEC
+    (31) identifier -> . CHARDEC
+    (32) identifier -> . NAME
+
+  ! reduce/reduce conflict for RBRACE resolved using rule 18 (attribute_dec -> var_dec SEMICOLON .)
+    RBRACE          reduce using rule 18 (attribute_dec -> var_dec SEMICOLON .)
+    INTDEC          shift and go to state 29
+    DOUBLEDEC       shift and go to state 30
+    STRINGDEC       shift and go to state 31
+    BOOLDEC         shift and go to state 32
+    CHARDEC         shift and go to state 33
+    NAME            shift and go to state 101
+
+  ! RBRACE          [ reduce using rule 73 (empty -> .) ]
+
+    var_dec                        shift and go to state 103
+    attribute_dec                  shift and go to state 112
+    var_initialize                 shift and go to state 104
+    empty                          shift and go to state 105
+    identifier                     shift and go to state 24
+
+state 110
+
+    (17) attribute_dec -> var_initialize SEMICOLON . attribute_dec
+    (19) attribute_dec -> var_initialize SEMICOLON .
+    (16) attribute_dec -> . var_dec SEMICOLON attribute_dec
+    (17) attribute_dec -> . var_initialize SEMICOLON attribute_dec
+    (18) attribute_dec -> . var_dec SEMICOLON
+    (19) attribute_dec -> . var_initialize SEMICOLON
+    (20) attribute_dec -> . empty
+    (24) var_dec -> . identifier NAME
+    (25) var_initialize -> . identifier NAME EQUALS expr
+    (26) var_initialize -> . identifier NAME EQUALS NAME
+    (73) empty -> .
+    (27) identifier -> . INTDEC
+    (28) identifier -> . DOUBLEDEC
+    (29) identifier -> . STRINGDEC
+    (30) identifier -> . BOOLDEC
+    (31) identifier -> . CHARDEC
+    (32) identifier -> . NAME
+
+  ! reduce/reduce conflict for RBRACE resolved using rule 19 (attribute_dec -> var_initialize SEMICOLON .)
+    RBRACE          reduce using rule 19 (attribute_dec -> var_initialize SEMICOLON .)
+    INTDEC          shift and go to state 29
+    DOUBLEDEC       shift and go to state 30
+    STRINGDEC       shift and go to state 31
+    BOOLDEC         shift and go to state 32
+    CHARDEC         shift and go to state 33
+    NAME            shift and go to state 101
+
+  ! RBRACE          [ reduce using rule 73 (empty -> .) ]
+
+    var_initialize                 shift and go to state 104
+    attribute_dec                  shift and go to state 113
+    var_dec                        shift and go to state 103
+    empty                          shift and go to state 105
+    identifier                     shift and go to state 24
+
+state 111
+
+    (67) loop -> DO LBRACE stmts RBRACE WHILE LPAR expr . RPAR
+    (36) expr -> expr . MULTIPLY expr
+    (37) expr -> expr . DIVIDE expr
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . MOD expr
+    (41) expr -> expr . EXPONENT expr
+    (57) expr -> expr . conditional_operators expr
+    (59) conditional_operators -> . EQEQ
+    (60) conditional_operators -> . LESS
+    (61) conditional_operators -> . GREATER
+    (62) conditional_operators -> . AND
+    (63) conditional_operators -> . OR
+    (64) conditional_operators -> . GREATEREQ
+    (65) conditional_operators -> . LESSEQ
+    (66) conditional_operators -> . NOTEQ
+
+    RPAR            shift and go to state 114
+    MULTIPLY        shift and go to state 35
+    DIVIDE          shift and go to state 36
+    PLUS            shift and go to state 37
+    MINUS           shift and go to state 38
+    MOD             shift and go to state 39
+    EXPONENT        shift and go to state 40
+    EQEQ            shift and go to state 42
+    LESS            shift and go to state 43
+    GREATER         shift and go to state 44
+    AND             shift and go to state 45
+    OR              shift and go to state 46
+    GREATEREQ       shift and go to state 47
+    LESSEQ          shift and go to state 48
+    NOTEQ           shift and go to state 49
+
+    conditional_operators          shift and go to state 41
+
+state 112
+
+    (16) attribute_dec -> var_dec SEMICOLON attribute_dec .
+
+    RBRACE          reduce using rule 16 (attribute_dec -> var_dec SEMICOLON attribute_dec .)
+
+
+state 113
+
+    (17) attribute_dec -> var_initialize SEMICOLON attribute_dec .
+
+    RBRACE          reduce using rule 17 (attribute_dec -> var_initialize SEMICOLON attribute_dec .)
+
+
+state 114
+
+    (67) loop -> DO LBRACE stmts RBRACE WHILE LPAR expr RPAR .
+
+    SEMICOLON       reduce using rule 67 (loop -> DO LBRACE stmts RBRACE WHILE LPAR expr RPAR .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for MINUS in state 0 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 15 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 23 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 34 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 35 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 36 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 37 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 38 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 39 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 40 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 41 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 65 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 67 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 68 resolved as shift
+WARNING: shift/reduce conflict for MULTIPLY in state 77 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 77 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 77 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 77 resolved as shift
+WARNING: shift/reduce conflict for MOD in state 77 resolved as shift
+WARNING: shift/reduce conflict for EXPONENT in state 77 resolved as shift
+WARNING: shift/reduce conflict for EQEQ in state 77 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 77 resolved as shift
+WARNING: shift/reduce conflict for GREATER in state 77 resolved as shift
+WARNING: shift/reduce conflict for AND in state 77 resolved as shift
+WARNING: shift/reduce conflict for OR in state 77 resolved as shift
+WARNING: shift/reduce conflict for GREATEREQ in state 77 resolved as shift
+WARNING: shift/reduce conflict for LESSEQ in state 77 resolved as shift
+WARNING: shift/reduce conflict for NOTEQ in state 77 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 80 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 91 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 94 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 107 resolved as shift
+WARNING: reduce/reduce conflict in state 5 resolved using rule (stmt -> empty)
+WARNING: rejected rule (expr -> empty) in state 5
+WARNING: reduce/reduce conflict in state 9 resolved using rule (stmt -> var_access)
+WARNING: rejected rule (expr -> var_access) in state 9
+WARNING: reduce/reduce conflict in state 14 resolved using rule (stmt -> unary_op)
+WARNING: rejected rule (expr -> unary_op) in state 14
+WARNING: reduce/reduce conflict in state 85 resolved using rule (expr -> empty)
+WARNING: rejected rule (opt_args -> empty) in state 85
+WARNING: reduce/reduce conflict in state 89 resolved using rule (var_access -> NAME)
+WARNING: rejected rule (var_initialize -> identifier NAME EQUALS NAME) in state 89
+WARNING: reduce/reduce conflict in state 109 resolved using rule (attribute_dec -> var_dec SEMICOLON)
+WARNING: rejected rule (empty -> <empty>) in state 109
+WARNING: reduce/reduce conflict in state 110 resolved using rule (attribute_dec -> var_initialize SEMICOLON)
+WARNING: rejected rule (empty -> <empty>) in state 110
+WARNING: Rule (opt_args -> empty) is never reduced
+WARNING: Rule (var_initialize -> identifier NAME EQUALS NAME) is never reduced

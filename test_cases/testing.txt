@@ -1,0 +1,93 @@
+# --------------------------------BASIC VARIABLES---------------------------------
+
+int a = 20;
+double b = 35^3/7%12;
+double c = b;
+bool d = true;
+char e = "Z";
+char f;
+f=e;
+string g = "Pakistan";
+double t = 6/5;
+#print(35^3/7%12);
+print(t);
+
+#g++; # Uncommenting put this line will give an unary operator error since we are trying to increment a string variable.
+# bool z = 230; #Uncommenting this line will give an assignment error since assigning int to a bool
+# string k = no_inverted_commas; #Uncommenting this line will give a variable not defined error
+print((((2/3)))); #Testing for Nested brackets
+
+print(a,b,c,d,e,f);
+print("");
+
+# ----------------------------------TESTING STRUCTS-------------------------------------
+struct student = {
+	int id;
+	string name;
+	double height;
+	bool good_student;
+	char first_letter;
+};
+
+student t1;
+student t2;
+student t3;
+
+#print(t3.name); #Uncommenting this line will give a struct attribute not initialized error
+
+t1.id = 22100147;
+t2.id = 22100112;
+
+t1.name = "Taimoor";
+t2.name = "Talal";
+
+t1.height = 5.8;
+t2.height = 4.2;
+
+t1.good_student = true;
+t2.good_student = false;
+
+t1.first_letter = "T";
+t2.first_letter = "A";
+
+print("Names:", t1.name, t2.name);
+print("ID:", t1.id, t2.id);
+print("Heights:", t1.height, t2.height);
+print("Good:", t1.good_student, t2.good_student);
+print("First Letter:", t1.first_letter, t2.first_letter);
+
+int foo = t1.id * a; #Manipulating struct values and accessing them
+print(foo);
+
+struct book = {
+	string name;
+	int pages;
+	bool available;
+	char id;
+};
+
+book potter;
+potter.name = t1.name;
+print(potter.name);
+
+#------------------------------------TESTING PARENTHESES AND NESTED EXPRESSION-------------------------------
+print("");
+double v = (2*a/(6^(1/2)%(5+5)));
+print(v);
+print("Original Value:", v);
+
+print(not(not(v))); #Getting truth value of v;
+
+int false_val = 0;
+
+print(not(not(false_val))); #Getting truth value of integer false_val which has a value of 0;
+print("");
+
+#----------------------------------------------TESTING LOOPS-------------------------------------------------
+int loop_iterator = 10;
+do
+{
+	print("Hello--->", loop_iterator);
+	loop_iterator--; #Change the DECREMENT to INCREMENT to start an INFINITE LOOP
+}while(loop_iterator>=0);
+
